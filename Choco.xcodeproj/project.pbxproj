@@ -16,6 +16,7 @@
 		2CC15F13184837B700048C33 /* libChocoCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15F10184837AC00048C33 /* libChocoCore.a */; };
 		2CC15F881848703F00048C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F851848703F00048C33 /* AppDelegate.m */; };
 		2CC15F891848703F00048C33 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F871848703F00048C33 /* RootViewController.m */; };
+		2CC15FAC1848A6AC00048C33 /* CocoaDebugTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15FAB1848A6AC00048C33 /* CocoaDebugTools.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		2CC15F861848703F00048C33 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		2CC15F871848703F00048C33 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2CC15FA518487F7E00048C33 /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCWebView.h; path = ChocoCore/ChocoCore/CCWebView/CCWebView.h; sourceTree = SOURCE_ROOT; };
+		2CC15FAA1848A6AC00048C33 /* CocoaDebugTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugTools.h; sourceTree = "<group>"; };
+		2CC15FAB1848A6AC00048C33 /* CocoaDebugTools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CocoaDebugTools.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,7 @@
 		2CC15F6A18485E6300048C33 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2CC15FA91848A6AC00048C33 /* Debug */,
 				2CC15F831848703F00048C33 /* App */,
 			);
 			path = Classes;
@@ -151,6 +155,15 @@
 				2CC15FA518487F7E00048C33 /* CCWebView.h */,
 			);
 			name = CCWebViewInc;
+			sourceTree = "<group>";
+		};
+		2CC15FA91848A6AC00048C33 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15FAA1848A6AC00048C33 /* CocoaDebugTools.h */,
+				2CC15FAB1848A6AC00048C33 /* CocoaDebugTools.mm */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +249,7 @@
 				2CC15F881848703F00048C33 /* AppDelegate.m in Sources */,
 				2CC15EB61848373900048C33 /* main.m in Sources */,
 				2CC15F891848703F00048C33 /* RootViewController.m in Sources */,
+				2CC15FAC1848A6AC00048C33 /* CocoaDebugTools.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

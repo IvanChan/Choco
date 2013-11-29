@@ -52,6 +52,7 @@
 		2CC15FA1184875CF00048C33 /* WebViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewProtocol.h; sourceTree = "<group>"; };
 		2CC15FA2184877BF00048C33 /* WebFrameProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebFrameProtocol.h; sourceTree = "<group>"; };
 		2CC15FA318487C0F00048C33 /* WebDataSourceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebDataSourceProtocol.h; sourceTree = "<group>"; };
+		6A94674A1848DDC400554A78 /* WebFramePolicyListenerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebFramePolicyListenerProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +122,7 @@
 		2CC15F6E18485EAC00048C33 /* Documentations */ = {
 			isa = PBXGroup;
 			children = (
+				6A94674A1848DDC400554A78 /* WebFramePolicyListenerProtocol.h */,
 				2CC15FA318487C0F00048C33 /* WebDataSourceProtocol.h */,
 				2CC15FA2184877BF00048C33 /* WebFrameProtocol.h */,
 				2CC15FA1184875CF00048C33 /* WebViewProtocol.h */,
@@ -326,6 +328,7 @@
 				2CC15F06184837AB00048C33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

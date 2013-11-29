@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WebDataSourceProtocol.h"
+#import "WebFramePolicyListenerProtocol.h"
 
 #define Page id
 #define HTMLFrameOwnerElement id
@@ -307,3 +308,5 @@
 - (void)setIsActive:(char)arg0 ;
 
 @end
+
+typedef NSObject<WebFrameProtocol> WebFrame;

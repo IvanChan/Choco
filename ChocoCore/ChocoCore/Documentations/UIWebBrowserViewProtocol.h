@@ -56,7 +56,7 @@
 - (id)inputView;
 - (void)_keyboardWillShow:(id)arg0;
 - (void)_keyboardWillHide:(id)arg0;
-- (id)_editingDelegate;
+- (id)_editingDelegate; //default UIWebView
 - (void)accessoryDone;
 - (char)isAutoFillMode;
 - (void)acceptedAutoFillWord:(id)arg0;

@@ -151,7 +151,7 @@
 - (void)_setCustomFixedPositionLayoutRectInWebThread:(CGRect)arg0 synchronize:(char)arg1 ;
 - (void)_setCustomFixedPositionLayoutRect:(CGRect)arg0 ;
 - (void)_overflowScrollPositionChangedTo:(CGPoint)arg0 forNode:(id)arg1 isUserScroll:(char)arg2 ;
-- (id)editingDelegate;
+- (id)editingDelegate;  // default UIWebBrowserView
 - (void)insertDictationPhrases:(id)arg0 metadata:(id)arg1 ;
 - (void)toggleBold:(id)arg0 ;
 - (void)toggleItalic:(id)arg0 ;
@@ -206,16 +206,16 @@
 - (char)goBack;
 - (char)goForward;
 - (id)_UIDelegateForwarder;
-- (id)UIDelegate;
+- (id)UIDelegate;       //default UIWebViewWebViewDelegate
 - (char)_allowsMessaging;
-- (id)_UIKitDelegate;
+- (id)_UIKitDelegate;   //default UIWebBrowserView
 - (id)_UIKitDelegateForwarder;
 - (void)setGroupName:(id)arg0 ;
 - (void)stopLoading:(id)arg0 ;
 - (void)_closeWindow;
 - (void)_mouseDidMoveOverElement:(id)arg0 modifierFlags:(unsigned int)arg1 ;
 - (id)_selectedOrMainFrame;
-- (id)historyDelegate;
+- (id)historyDelegate;  //default nil
 - (Page)page;
 - (int)_keyboardUIMode;
 - (void)_pushPerformingProgrammaticFocus;
@@ -230,8 +230,8 @@
 - (id)_resourceLoadDelegateForwarder;
 - (id)_formDelegateForSelector:(SEL)arg0 ;
 - (id)_deviceOrientationProvider;
-- (id)resourceLoadDelegate;
-- (id)downloadDelegate;
+- (id)resourceLoadDelegate;        //default UIWebViewWebViewDelegate
+- (id)downloadDelegate;            //default nil
 - (char)isContinuousSpellCheckingEnabled;
 - (id)_editingDelegateForwarder;
 - (char)smartInsertDeleteEnabled;
@@ -262,9 +262,9 @@
 - (id)_objectForIdentifier:(unsigned long)arg0 ;
 - (void)_removeObjectForIdentifier:(unsigned long)arg0 ;
 - (void)_didCommitLoadForFrame:(id)arg0 ;
-- (id)_webMailDelegate;
+- (id)_webMailDelegate; //default nil
 - (id)_policyDelegateForwarder;
-- (id)_formDelegate;
+- (id)_formDelegate;  //default UIWebFormDelegate
 - (double)estimatedProgress;
 - (void)setMainFrameDocumentReady:(char)arg0 ;
 - (id)_downloadURL:(id)arg0 ;
@@ -276,8 +276,8 @@
 - (id)_pluginForMIMEType:(id)arg0 ;
 - (id)_videoProxyPluginForMIMEType:(id)arg0 ;
 - (id)mediaStyle;
-- (id)scriptDebugDelegate;
-- (id)policyDelegate;
+- (id)scriptDebugDelegate; //default nil
+- (id)policyDelegate;       //default UIWebViewWebViewDelegate
 - (void)setNextKeyView:(id)arg0 ;
 - (id)previousValidKeyView;
 - (void)scrollToBeginningOfDocument:(id)arg0 ;
@@ -386,7 +386,7 @@
 - (id)rectsForTextMatches;
 - (id)inspector;
 - (char)canBeRemotelyInspected;
-- (void)setUIDelegate:(id)arg0 ;
+- (void)setUIDelegate:(id)arg0 ;       //default UIWebViewWebViewDelegate
 - (void)setCurrentNodeHighlight:(id)arg0 ;
 - (void)_removeFromAllWebViewsSet;
 - (void)_addToAllWebViewsSet;
@@ -497,7 +497,7 @@
 - (char)_webGLEnabled;
 - (void)_setWebGLEnabled:(char)arg0 ;
 - (id)initWithFrame:(CGRect)arg0 frameName:(id)arg1 groupName:(id)arg2 ;
-- (id)frameLoadDelegate;
+- (id)frameLoadDelegate;       //default UIWebViewWebViewDelegate
 - (id)_focusedFrame;
 - (float)_zoomMultiplier:(char)arg0 ;
 - (id)customTextEncodingName;
@@ -627,3 +627,6 @@
 - (char)isLoading;
 
 @end
+
+
+typedef NSObject<WebViewProtocol> WebView;

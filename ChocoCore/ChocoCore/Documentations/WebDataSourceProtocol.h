@@ -68,3 +68,5 @@
 - (id)textEncodingName;
 
 @end
+
+typedef NSObject<WebDataSourceProtocol> WebDataSource;

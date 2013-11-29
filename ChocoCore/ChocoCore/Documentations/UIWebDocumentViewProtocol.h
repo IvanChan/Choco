@@ -220,7 +220,7 @@
 - (CGRect)closestCaretRectInMarkedTextRangeForPoint:(CGPoint)arg0 ;
 - (unsigned int)offsetInMarkedTextForSelection:(id)arg0 ;
 - (CGPoint)constrainedPoint:(CGPoint)arg0 ;
-- (id)inputDelegate;
+- (id)inputDelegate;    //default nil
 - (void)cut:(id)arg0 ;
 - (void)disableClearsOnInsertion;
 - (void)copy:(id)arg0 ;
@@ -588,7 +588,7 @@
 - (char)gestureRecognizer:(id)arg0 canBePreventedByGestureRecognizer:(id)arg1 ;
 - (void)highlightApproximateNodeAndDisplayInfoSheet;
 - (void)setInteractionDelegate:(id)arg0 ;
-- (id)interactionDelegate;
+- (id)interactionDelegate;  //default nil
 - (void)setAllowsImageSheet:(char)arg0 ;
 - (void)setAllowsLinkSheet:(char)arg0 ;
 - (id)interactionElement;

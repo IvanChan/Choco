@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        // Initialization code
+        // Initialization code        
     }
     return self;
 }

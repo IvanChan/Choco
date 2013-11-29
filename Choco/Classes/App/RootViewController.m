@@ -21,6 +21,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+   //UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     CCWebView *webView = [[CCWebView alloc] initWithFrame:self.view.bounds];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.163.com"]]];
     [self.view addSubview:webView];

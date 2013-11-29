@@ -1,0 +1,333 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2CC15EE5184837AB00048C33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EE4184837AB00048C33 /* Foundation.framework */; };
+		2CC15EEA184837AB00048C33 /* ChocoCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CC15EE9184837AB00048C33 /* ChocoCore.h */; };
+		2CC15F17184837FD00048C33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15F16184837FD00048C33 /* UIKit.framework */; };
+		2CC15F671848431400048C33 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15F661848431400048C33 /* QuartzCore.framework */; };
+		2CC15F691848433F00048C33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15F681848433F00048C33 /* CoreGraphics.framework */; };
+		2CC15F7818485F5500048C33 /* CCWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F7718485F5500048C33 /* CCWebView.m */; };
+		2CC15F7B184868EF00048C33 /* CCWebScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F7A184868EF00048C33 /* CCWebScrollView.m */; };
+		2CC15F7C184869EF00048C33 /* CCWebDocumentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F7218485EAC00048C33 /* CCWebDocumentView.m */; };
+		2CC15F7F18486E9C00048C33 /* CCWebBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F7018485EAC00048C33 /* CCWebBrowserView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2CC15EDF184837AB00048C33 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				2CC15EEA184837AB00048C33 /* ChocoCore.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2CC15EE1184837AB00048C33 /* libChocoCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libChocoCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CC15EE4184837AB00048C33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2CC15EE8184837AB00048C33 /* ChocoCore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChocoCore-Prefix.pch"; sourceTree = "<group>"; };
+		2CC15EE9184837AB00048C33 /* ChocoCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChocoCore.h; sourceTree = "<group>"; };
+		2CC15F16184837FD00048C33 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2CC15F661848431400048C33 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2CC15F681848433F00048C33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2CC15F6F18485EAC00048C33 /* CCWebBrowserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCWebBrowserView.h; sourceTree = "<group>"; };
+		2CC15F7018485EAC00048C33 /* CCWebBrowserView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCWebBrowserView.m; sourceTree = "<group>"; };
+		2CC15F7118485EAC00048C33 /* CCWebDocumentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCWebDocumentView.h; sourceTree = "<group>"; };
+		2CC15F7218485EAC00048C33 /* CCWebDocumentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCWebDocumentView.m; sourceTree = "<group>"; };
+		2CC15F7618485F5500048C33 /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebView.h; sourceTree = "<group>"; };
+		2CC15F7718485F5500048C33 /* CCWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCWebView.m; sourceTree = "<group>"; };
+		2CC15F79184868EF00048C33 /* CCWebScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebScrollView.h; sourceTree = "<group>"; };
+		2CC15F7A184868EF00048C33 /* CCWebScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCWebScrollView.m; sourceTree = "<group>"; };
+		2CC15F7D18486A2600048C33 /* UIWebDocumentViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebDocumentViewProtocol.h; sourceTree = "<group>"; };
+		2CC15F7E18486E5E00048C33 /* UIWebBrowserViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIWebBrowserViewProtocol.h; sourceTree = "<group>"; };
+		2CC15FA1184875CF00048C33 /* WebViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewProtocol.h; sourceTree = "<group>"; };
+		2CC15FA2184877BF00048C33 /* WebFrameProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebFrameProtocol.h; sourceTree = "<group>"; };
+		2CC15FA318487C0F00048C33 /* WebDataSourceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebDataSourceProtocol.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2CC15EDE184837AB00048C33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CC15F691848433F00048C33 /* CoreGraphics.framework in Frameworks */,
+				2CC15F671848431400048C33 /* QuartzCore.framework in Frameworks */,
+				2CC15F17184837FD00048C33 /* UIKit.framework in Frameworks */,
+				2CC15EE5184837AB00048C33 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2CC15ED8184837AB00048C33 = {
+			isa = PBXGroup;
+			children = (
+				2CC15EE6184837AB00048C33 /* ChocoCore */,
+				2CC15EE7184837AB00048C33 /* Supporting Files */,
+				2CC15EE3184837AB00048C33 /* Frameworks */,
+				2CC15EE2184837AB00048C33 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2CC15EE2184837AB00048C33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15EE1184837AB00048C33 /* libChocoCore.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2CC15EE3184837AB00048C33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15F681848433F00048C33 /* CoreGraphics.framework */,
+				2CC15F661848431400048C33 /* QuartzCore.framework */,
+				2CC15F16184837FD00048C33 /* UIKit.framework */,
+				2CC15EE4184837AB00048C33 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2CC15EE6184837AB00048C33 /* ChocoCore */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15EE9184837AB00048C33 /* ChocoCore.h */,
+				2CC15F6E18485EAC00048C33 /* Documentations */,
+				2CC15F7318485EE300048C33 /* CCWebScrollView */,
+				2CC15F7418485EE300048C33 /* CCWebView */,
+			);
+			path = ChocoCore;
+			sourceTree = "<group>";
+		};
+		2CC15EE7184837AB00048C33 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15EE8184837AB00048C33 /* ChocoCore-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			path = ChocoCore;
+			sourceTree = "<group>";
+		};
+		2CC15F6E18485EAC00048C33 /* Documentations */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15FA318487C0F00048C33 /* WebDataSourceProtocol.h */,
+				2CC15FA2184877BF00048C33 /* WebFrameProtocol.h */,
+				2CC15FA1184875CF00048C33 /* WebViewProtocol.h */,
+				2CC15F7E18486E5E00048C33 /* UIWebBrowserViewProtocol.h */,
+				2CC15F6F18485EAC00048C33 /* CCWebBrowserView.h */,
+				2CC15F7018485EAC00048C33 /* CCWebBrowserView.m */,
+				2CC15F7D18486A2600048C33 /* UIWebDocumentViewProtocol.h */,
+				2CC15F7118485EAC00048C33 /* CCWebDocumentView.h */,
+				2CC15F7218485EAC00048C33 /* CCWebDocumentView.m */,
+			);
+			path = Documentations;
+			sourceTree = "<group>";
+		};
+		2CC15F7318485EE300048C33 /* CCWebScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15F79184868EF00048C33 /* CCWebScrollView.h */,
+				2CC15F7A184868EF00048C33 /* CCWebScrollView.m */,
+			);
+			path = CCWebScrollView;
+			sourceTree = "<group>";
+		};
+		2CC15F7418485EE300048C33 /* CCWebView */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15F7618485F5500048C33 /* CCWebView.h */,
+				2CC15F7718485F5500048C33 /* CCWebView.m */,
+			);
+			path = CCWebView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2CC15EE0184837AB00048C33 /* ChocoCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CC15F04184837AB00048C33 /* Build configuration list for PBXNativeTarget "ChocoCore" */;
+			buildPhases = (
+				2CC15EDD184837AB00048C33 /* Sources */,
+				2CC15EDE184837AB00048C33 /* Frameworks */,
+				2CC15EDF184837AB00048C33 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChocoCore;
+			productName = ChocoCore;
+			productReference = 2CC15EE1184837AB00048C33 /* libChocoCore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2CC15ED9184837AB00048C33 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Chan Ivan";
+			};
+			buildConfigurationList = 2CC15EDC184837AB00048C33 /* Build configuration list for PBXProject "ChocoCore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2CC15ED8184837AB00048C33;
+			productRefGroup = 2CC15EE2184837AB00048C33 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2CC15EE0184837AB00048C33 /* ChocoCore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2CC15EDD184837AB00048C33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CC15F7F18486E9C00048C33 /* CCWebBrowserView.m in Sources */,
+				2CC15F7B184868EF00048C33 /* CCWebScrollView.m in Sources */,
+				2CC15F7C184869EF00048C33 /* CCWebDocumentView.m in Sources */,
+				2CC15F7818485F5500048C33 /* CCWebView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2CC15F02184837AB00048C33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2CC15F03184837AB00048C33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2CC15F05184837AB00048C33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ChocoCore.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ChocoCore/ChocoCore-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2CC15F06184837AB00048C33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ChocoCore.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ChocoCore/ChocoCore-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2CC15EDC184837AB00048C33 /* Build configuration list for PBXProject "ChocoCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CC15F02184837AB00048C33 /* Debug */,
+				2CC15F03184837AB00048C33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2CC15F04184837AB00048C33 /* Build configuration list for PBXNativeTarget "ChocoCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CC15F05184837AB00048C33 /* Debug */,
+				2CC15F06184837AB00048C33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2CC15ED9184837AB00048C33 /* Project object */;
+}

@@ -1,0 +1,388 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2CC15EAA1848373900048C33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EA91848373900048C33 /* Foundation.framework */; };
+		2CC15EAC1848373900048C33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EAB1848373900048C33 /* CoreGraphics.framework */; };
+		2CC15EAE1848373900048C33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EAD1848373900048C33 /* UIKit.framework */; };
+		2CC15EB41848373900048C33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CC15EB21848373900048C33 /* InfoPlist.strings */; };
+		2CC15EB61848373900048C33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15EB51848373900048C33 /* main.m */; };
+		2CC15EBC1848373900048C33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC15EBB1848373900048C33 /* Images.xcassets */; };
+		2CC15F13184837B700048C33 /* libChocoCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15F10184837AC00048C33 /* libChocoCore.a */; };
+		2CC15F881848703F00048C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F851848703F00048C33 /* AppDelegate.m */; };
+		2CC15F891848703F00048C33 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F871848703F00048C33 /* RootViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2CC15F0F184837AC00048C33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CC15F0A184837AB00048C33 /* ChocoCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2CC15EE1184837AB00048C33;
+			remoteInfo = ChocoCore;
+		};
+		2CC15F14184837BE00048C33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CC15F0A184837AB00048C33 /* ChocoCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2CC15EE0184837AB00048C33;
+			remoteInfo = ChocoCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2CC15EA61848373900048C33 /* Choco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Choco.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CC15EA91848373900048C33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2CC15EAB1848373900048C33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2CC15EAD1848373900048C33 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2CC15EB11848373900048C33 /* Choco-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Choco-Info.plist"; sourceTree = "<group>"; };
+		2CC15EB31848373900048C33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2CC15EB51848373900048C33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2CC15EB71848373900048C33 /* Choco-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Choco-Prefix.pch"; sourceTree = "<group>"; };
+		2CC15EBB1848373900048C33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2CC15F0A184837AB00048C33 /* ChocoCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChocoCore.xcodeproj; path = ChocoCore/ChocoCore.xcodeproj; sourceTree = "<group>"; };
+		2CC15F841848703F00048C33 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2CC15F851848703F00048C33 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2CC15F861848703F00048C33 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		2CC15F871848703F00048C33 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		2CC15FA518487F7E00048C33 /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCWebView.h; path = ChocoCore/ChocoCore/CCWebView/CCWebView.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2CC15EA31848373900048C33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CC15F13184837B700048C33 /* libChocoCore.a in Frameworks */,
+				2CC15EAC1848373900048C33 /* CoreGraphics.framework in Frameworks */,
+				2CC15EAE1848373900048C33 /* UIKit.framework in Frameworks */,
+				2CC15EAA1848373900048C33 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2CC15E9D1848373900048C33 = {
+			isa = PBXGroup;
+			children = (
+				2CC15F0A184837AB00048C33 /* ChocoCore.xcodeproj */,
+				2CC15EAF1848373900048C33 /* Choco */,
+				2CC15EA81848373900048C33 /* Frameworks */,
+				2CC15EA71848373900048C33 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2CC15EA71848373900048C33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15EA61848373900048C33 /* Choco.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2CC15EA81848373900048C33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15EA91848373900048C33 /* Foundation.framework */,
+				2CC15EAB1848373900048C33 /* CoreGraphics.framework */,
+				2CC15EAD1848373900048C33 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2CC15EAF1848373900048C33 /* Choco */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15FA418487F6700048C33 /* CCWebViewInc */,
+				2CC15F6A18485E6300048C33 /* Classes */,
+				2CC15EB01848373900048C33 /* Supporting Files */,
+			);
+			path = Choco;
+			sourceTree = "<group>";
+		};
+		2CC15EB01848373900048C33 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15EBB1848373900048C33 /* Images.xcassets */,
+				2CC15EB11848373900048C33 /* Choco-Info.plist */,
+				2CC15EB21848373900048C33 /* InfoPlist.strings */,
+				2CC15EB51848373900048C33 /* main.m */,
+				2CC15EB71848373900048C33 /* Choco-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2CC15F0B184837AB00048C33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15F10184837AC00048C33 /* libChocoCore.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2CC15F6A18485E6300048C33 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15F831848703F00048C33 /* App */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2CC15F831848703F00048C33 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15F841848703F00048C33 /* AppDelegate.h */,
+				2CC15F851848703F00048C33 /* AppDelegate.m */,
+				2CC15F861848703F00048C33 /* RootViewController.h */,
+				2CC15F871848703F00048C33 /* RootViewController.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2CC15FA418487F6700048C33 /* CCWebViewInc */ = {
+			isa = PBXGroup;
+			children = (
+				2CC15FA518487F7E00048C33 /* CCWebView.h */,
+			);
+			name = CCWebViewInc;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2CC15EA51848373900048C33 /* Choco */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CC15ED21848373900048C33 /* Build configuration list for PBXNativeTarget "Choco" */;
+			buildPhases = (
+				2CC15EA21848373900048C33 /* Sources */,
+				2CC15EA31848373900048C33 /* Frameworks */,
+				2CC15EA41848373900048C33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2CC15F15184837BE00048C33 /* PBXTargetDependency */,
+			);
+			name = Choco;
+			productName = Choco;
+			productReference = 2CC15EA61848373900048C33 /* Choco.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2CC15E9E1848373900048C33 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Chan Ivan";
+			};
+			buildConfigurationList = 2CC15EA11848373900048C33 /* Build configuration list for PBXProject "Choco" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2CC15E9D1848373900048C33;
+			productRefGroup = 2CC15EA71848373900048C33 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2CC15F0B184837AB00048C33 /* Products */;
+					ProjectRef = 2CC15F0A184837AB00048C33 /* ChocoCore.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				2CC15EA51848373900048C33 /* Choco */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2CC15F10184837AC00048C33 /* libChocoCore.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libChocoCore.a;
+			remoteRef = 2CC15F0F184837AC00048C33 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2CC15EA41848373900048C33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CC15EB41848373900048C33 /* InfoPlist.strings in Resources */,
+				2CC15EBC1848373900048C33 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2CC15EA21848373900048C33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CC15F881848703F00048C33 /* AppDelegate.m in Sources */,
+				2CC15EB61848373900048C33 /* main.m in Sources */,
+				2CC15F891848703F00048C33 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2CC15F15184837BE00048C33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ChocoCore;
+			targetProxy = 2CC15F14184837BE00048C33 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2CC15EB21848373900048C33 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2CC15EB31848373900048C33 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2CC15ED01848373900048C33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2CC15ED11848373900048C33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2CC15ED31848373900048C33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Choco/Choco-Prefix.pch";
+				INFOPLIST_FILE = "Choco/Choco-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2CC15ED41848373900048C33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Choco/Choco-Prefix.pch";
+				INFOPLIST_FILE = "Choco/Choco-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2CC15EA11848373900048C33 /* Build configuration list for PBXProject "Choco" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CC15ED01848373900048C33 /* Debug */,
+				2CC15ED11848373900048C33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2CC15ED21848373900048C33 /* Build configuration list for PBXNativeTarget "Choco" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CC15ED31848373900048C33 /* Debug */,
+				2CC15ED41848373900048C33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2CC15E9E1848373900048C33 /* Project object */;
+}

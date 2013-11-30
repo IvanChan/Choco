@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Chan Ivan. All rights reserved.
 //
 
-#import "CCWebBrowserView.h"
+#import <UIKit/UIKit.h>
 #import "UIWebDocumentViewProtocol.h"
 
-@interface CCWebDocumentView : CCWebBrowserView <UIWebDocumentViewProtocol>
+@interface CCWebDocumentView : UIView <UIWebDocumentViewProtocol>
 
 @end

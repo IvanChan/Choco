@@ -8,12 +8,12 @@
 
 #import "CCWebView.h"
 #import <objc/message.h>
-#import "CCWebDocumentView.h"
+#import "CCWebBrowserView.h"
 #import "CCWebScrollView.h"
 
 @interface CCWebView ()
 {
-    CCWebDocumentView   *_webDocumentView;
+    CCWebBrowserView    *_webBrowserView;
     CCWebScrollView     *_webScrollView;
 }
 
@@ -45,49 +45,50 @@
 
 - (BOOL)setup
 {
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor orangeColor];
     
     _webScrollView = [[CCWebScrollView alloc] initWithFrame:self.bounds];
+    _webScrollView.backgroundColor = [UIColor purpleColor];
     _webScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:_webScrollView];
     
-    Class cls = NSClassFromString(@"UIWebDocumentView");
-    _webDocumentView = [[cls alloc] initWithFrame:_webScrollView.bounds];
-    _webDocumentView.autoresizingMask = UIViewAutoresizingNone;
-    _webDocumentView.delegate = self;
+    Class cls = NSClassFromString(@"UIWebBrowserView");
+    _webBrowserView = [[cls alloc] initWithFrame:_webScrollView.bounds];
+    _webBrowserView.autoresizingMask = UIViewAutoresizingNone;
+    _webBrowserView.delegate = self;
     //FIXME: according to UIWebView, should set this
     //_webDocumentView._editingDelegate = self;
-    [_webScrollView addSubview:_webDocumentView];
+    [_webScrollView addSubview:_webBrowserView];
     
     //FIXME: dont bind scrollView & documentView directly
-    [_webDocumentView addObserver:_webScrollView
+    [_webBrowserView addObserver:_webScrollView
                        forKeyPath:@"frame" options:NSKeyValueObservingOptionNew
                           context:nil];
     
-    [[_webDocumentView webView] setUIDelegate:self];
-    [[_webDocumentView webView] setFrameLoadDelegate:self];
-    [[_webDocumentView webView] setResourceLoadDelegate:self];
-    [[_webDocumentView webView] setPolicyDelegate:self];
+    [[self webView] setUIDelegate:self];
+    [[self webView] setFrameLoadDelegate:self];
+    [[self webView] setResourceLoadDelegate:self];
+    [[self webView] setPolicyDelegate:self];
     
     //TODO:
-    //[[_webDocumentView webView] setDownloadDelegate:self];
-    //[[_webDocumentView webView] setHistoryDelegate:self];
+    //[[self webView] setDownloadDelegate:self];
+    //[[self webView] setHistoryDelegate:self];
     
-    return (_webScrollView && _webDocumentView);
+    return (_webScrollView && _webBrowserView);
 }
 
 - (void)dealloc
 {
     
-    [[_webDocumentView webView] setUIDelegate:nil];
-    [[_webDocumentView webView] setFrameLoadDelegate:nil];
-    [[_webDocumentView webView] setResourceLoadDelegate:nil];
-    [[_webDocumentView webView] setPolicyDelegate:nil];
+    [[self webView] setUIDelegate:nil];
+    [[self webView] setFrameLoadDelegate:nil];
+    [[self webView] setResourceLoadDelegate:nil];
+    [[self webView] setPolicyDelegate:nil];
     
-    [_webDocumentView removeObserver:_webScrollView forKeyPath:@"frame"];
-    _webDocumentView.delegate = nil;
-    [_webDocumentView release];
-    _webDocumentView = nil;
+    [_webBrowserView removeObserver:_webScrollView forKeyPath:@"frame"];
+    _webBrowserView.delegate = nil;
+    [_webBrowserView release];
+    _webBrowserView = nil;
     
     [_webScrollView release];
     _webScrollView = nil;
@@ -96,9 +97,14 @@
 }
 
 #pragma mark - Getters
--(UIView *)documentView
+- (CCWebBrowserView *)browserView
 {
-    return _webDocumentView;
+    return _webBrowserView;
+}
+
+- (CCWebBrowserView *)documentView
+{
+    return _webBrowserView;
 }
 
 - (UIScrollView *)scrollView
@@ -106,9 +112,14 @@
     return _webScrollView;
 }
 
+- (WebView *)webView
+{
+    return [self.browserView webView];
+}
+
 - (NSURLRequest *)request
 {
-    return [[[[_webDocumentView webView] mainFrame] dataSource] request];
+    return [[[[self webView] mainFrame] dataSource] request];
 }
 
 - (BOOL)scalesPageToFit
@@ -118,27 +129,27 @@
 
 - (UIDataDetectorTypes)dataDetectorTypes
 {
-    return [_webDocumentView dataDetectorTypes];
+    return [self.browserView dataDetectorTypes];
 }
 
 - (BOOL)allowsInlineMediaPlayback
 {
-    return [_webDocumentView allowsInlineMediaPlayback];
+    return [self.browserView  allowsInlineMediaPlayback];
 }
 
 - (BOOL)mediaPlaybackRequiresUserAction
 {
-    return [_webDocumentView mediaPlaybackRequiresUserAction];
+    return [self.browserView  mediaPlaybackRequiresUserAction];
 }
 
 - (BOOL)mediaPlaybackAllowsAirPlay
 {
-    return [_webDocumentView mediaPlaybackAllowsAirPlay];
+    return [self.browserView  mediaPlaybackAllowsAirPlay];
 }
 
 - (BOOL)suppressesIncrementalRendering
 {
-    return [_webDocumentView suppressesIncrementalRendering];
+    return [self.browserView  suppressesIncrementalRendering];
 }
 
 - (BOOL)keyboardDisplayRequiresUserAction
@@ -177,27 +188,27 @@
 
 - (void)setDataDetectorTypes:(UIDataDetectorTypes)dataDetectorTypes
 {
-    [_webDocumentView setDataDetectorTypes:dataDetectorTypes];
+    [self.browserView  setDataDetectorTypes:dataDetectorTypes];
 }
 
 - (void)setAllowsInlineMediaPlayback:(BOOL)allowsInlineMediaPlayback
 {
-    [_webDocumentView setAllowsInlineMediaPlayback:allowsInlineMediaPlayback];
+    [self.browserView  setAllowsInlineMediaPlayback:allowsInlineMediaPlayback];
 }
 
 - (void)setMediaPlaybackRequiresUserAction:(BOOL)mediaPlaybackRequiresUserAction
 {
-    [_webDocumentView setMediaPlaybackRequiresUserAction:mediaPlaybackRequiresUserAction];
+    [self.browserView  setMediaPlaybackRequiresUserAction:mediaPlaybackRequiresUserAction];
 }
 
 - (void)setMediaPlaybackAllowsAirPlay:(BOOL)mediaPlaybackAllowsAirPlay
 {
-    [_webDocumentView setMediaPlaybackAllowsAirPlay:mediaPlaybackAllowsAirPlay];
+    [self.browserView  setMediaPlaybackAllowsAirPlay:mediaPlaybackAllowsAirPlay];
 }
 
 - (void)setSuppressesIncrementalRendering:(BOOL)suppressesIncrementalRendering
 {
-    [_webDocumentView setSuppressesIncrementalRendering:suppressesIncrementalRendering];
+    [self.browserView  setSuppressesIncrementalRendering:suppressesIncrementalRendering];
 }
 
 - (void)setKeyboardDisplayRequiresUserAction:(BOOL)keyboardDisplayRequiresUserAction
@@ -220,71 +231,58 @@
 #pragma mark - Load Methods
 - (void)loadRequest:(NSURLRequest *)request
 {
-    [_webDocumentView loadRequest:request];
+    [self.browserView  loadRequest:request];
 }
 
 - (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL
 {
-    [_webDocumentView loadHTMLString:string baseURL:baseURL];
+    [self.browserView  loadHTMLString:string baseURL:baseURL];
 }
 
 - (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName baseURL:(NSURL *)baseURL
 {
-    [_webDocumentView loadData:data MIMEType:MIMEType textEncodingName:textEncodingName baseURL:baseURL];
+    [self.browserView  loadData:data MIMEType:MIMEType textEncodingName:textEncodingName baseURL:baseURL];
 }
 
 #pragma mark - State
 - (void)reload
 {
-    [[[_webDocumentView webView] mainFrame] reload];
+    [[[self webView] mainFrame] reload];
 }
 
 - (void)stopLoading
 {
-    [[[_webDocumentView webView] mainFrame] stopLoading];
+    [[[self webView] mainFrame] stopLoading];
 }
 
 - (BOOL)canGoBack
 {
-    return [[_webDocumentView webView] canGoBack];
+    return [[self webView] canGoBack];
 }
 
 - (void)goBack
 {
-    [[_webDocumentView webView] goBack];
+    [[self webView] goBack];
 }
 
 -(BOOL)canGoForward
 {
-    return [[_webDocumentView webView] canGoForward];
+    return [[self webView] canGoForward];
 }
 
 - (void)goForward
 {
-    [[_webDocumentView webView] goForward];
+    [[self webView] goForward];
 }
 
 #pragma mark - Javascript
 - (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script
 {
-    return [[_webDocumentView webView] stringByEvaluatingJavaScriptFromString:script];
+    return [[self webView] stringByEvaluatingJavaScriptFromString:script];
 }
 
 #pragma mark - Delegate
 - (void)webView:(id)arg0 decidePolicyForGeolocationRequestFromOrigin:(id)arg1 frame:(id)arg2 listener:(id)arg3
-{}
-
-
-- (void)webView:(id)arg0 didReceiveServerRedirectForProvisionalLoadForFrame:(id)arg1
-{}
-
-- (void)webView:(id)arg0 didCommitLoadForFrame:(id)arg1
-{}
-
-- (void)webView:(id)arg0 didReceiveTitle:(id)arg1 forFrame:(id)arg2
-{}
-
-- (void)webView:(id)arg0 didFinishLoadForFrame:(id)arg1
 {}
 
 - (void)webView:(id)arg0 didFailLoadWithError:(id)arg1 forFrame:(id)arg2
@@ -293,17 +291,7 @@
 - (void)webView:(id)arg0 didChangeLocationWithinPageForFrame:(id)arg1
 {}
 
-- (void)webView:(id)arg0 didClearWindowObject:(id)arg1 forFrame:(id)arg2
-{}
-
-
 - (void)webView:(id)arg0 unableToImplementPolicyWithError:(id)arg1 frame:(id)arg2
-{}
-
-- (void)webView:(id)arg0 decidePolicyForMIMEType:(id)arg1 request:(id)arg2 frame:(id)arg3 decisionListener:(id)arg4
-{}
-
-- (void)webView:(id)arg0 decidePolicyForNewWindowAction:(id)arg1 request:(id)arg2 newFrameName:(id)arg3 decisionListener:(id)arg4
 {}
 
 - (void)webView:(id)arg0 resource:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2 fromDataSource:(id)arg3
@@ -312,21 +300,15 @@
 - (void)webView:(id)arg0 resource:(id)arg1 didCancelAuthenticationChallenge:(id)arg2 fromDataSource:(id)arg3
 {}
 
-- (char)webView:(id)arg0 resource:(id)arg1 canAuthenticateAgainstProtectionSpace:(id)arg2 forDataSource:(id)arg3
+- (BOOL)webView:(id)arg0 resource:(id)arg1 canAuthenticateAgainstProtectionSpace:(id)arg2 forDataSource:(id)arg3
 {
     return YES;
 }
 
-- (id)webView:(id)arg0 connectionPropertiesForResource:(id)arg1 dataSource:(id)arg2
+- (id)webView:(id)arg0 createWebViewWithRequest:(id)arg1
 {
     return nil;
 }
-
-- (void)webView:(id)arg0 resource:(id)arg1 didFinishLoadingFromDataSource:(id)arg2
-{}
-
-- (void)webView:(id)arg0 resource:(id)arg1 didFailLoadingWithError:(id)arg2 fromDataSource:(id)arg3
-{}
 
 - (void)webViewClose:(id)arg0
 {}
@@ -374,14 +356,10 @@
         
         if (frame.size.width > 0 && frame.size.height > 0)
         {
-            [webDocumentView redrawScaledDocument];
+            //[webDocumentView redrawScaledDocument];
         }
     }
 }
-
-
-- (void)webViewMainFrameDidFailLoad:(id)arg0 withError:(id)arg1
-{}
 
 #pragma mark - Delegate
 /**
@@ -404,7 +382,32 @@
  */
 - (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)action request:(NSMutableURLRequest *)request frame:(WebFrame *)frame decisionListener:(WebFramePolicyListener *)listener
 {
+//    UIWebURLAction:
+//
+//    + (char)performDefaultActionForURL:(id)arg0 andDOMNode:(id)arg1 withAllowedTypes:(unsigned int)arg2 forFrame:(id)arg3 inView:(id)arg4 ;
+//    + (void)performDataDetectorsDefaultActionForDOMNode:(id)arg0 forFrame:(id)arg1 inView:(id)arg2 ;
+    
+    //"performDefaultActionForURL:andDOMNode:withAllowedTypes:forFrame:inView:"
+    //"_canHandleRequest:"
+    
+//    Class uiwebURLActionCls = NSClassFromString(@"UIWebURLAction");
+//    [uiwebURLActionCls performDefaultActionForURL:[request URL] andDOMNode:nil withAllowedTypes:-3 forFrame:frame inView:self];
+    
     [listener use];
+}
+
+/**
+ *  decied policy for newWindow
+ *
+ *  @param webView
+ *  @param action
+ *  @param request
+ *  @param newFrameName
+ *  @param listener
+ */
+- (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)action request:(NSMutableURLRequest *)request newFrameName:(NSString *)newFrameName decisionListener:(WebFramePolicyListener *)listener
+{
+    [self webView:webView decidePolicyForNavigationAction:action request:request frame:[[self webView] mainFrame] decisionListener:listener];
 }
 
 /**
@@ -430,8 +433,9 @@
     return request;
 }
 
+
 /**
- *  Will send request
+ *  Called after identifierForInitialRequest
  *
  *  @param webView
  *  @param arg1       TODO:check type
@@ -447,6 +451,53 @@
 }
 
 /**
+ *  Called after willsentRequest, maybe just mainFrame
+ *
+ *  @param webView
+ *  @param resource
+ *  @param dataSource
+ *
+ *  @return TODO:need check return typ
+ */
+- (NSURLRequest *)webView:(WebView *)webView connectionPropertiesForResource:(NSMutableURLRequest *)resource dataSource:(WebDataSource *)dataSource
+{//FIXME: return resource will lead to some kindof error, the load process stop
+    return nil;
+}
+
+/**
+ *  Will lead to decidePolicyForNavigationAction again
+ *
+ *  @param webView
+ *  @param frame
+ */
+- (void)webView:(WebView *)webView didReceiveServerRedirectForProvisionalLoadForFrame:(WebFrame *)frame
+{}
+
+/**
+ *  after provisonal load, this method called after decidePolicyForNavigationAction
+ *
+ *  @param webView
+ *  @param MIMEType
+ *  @param request
+ *  @param frame
+ *  @param listener
+ */
+- (void)webView:(WebView *)webView decidePolicyForMIMEType:(NSString *)MIMEType request:(NSMutableURLRequest *)request frame:(WebFrame *)frame decisionListener:(WebFramePolicyListener *)listener
+{
+    [listener use];
+}
+
+/**
+ *  Called after each resource request sent & finished load
+ *
+ *  @param webView
+ *  @param resource
+ *  @param dataSource
+ */
+- (void)webView:(WebView *)webView resource:(NSMutableURLRequest *)resource didFinishLoadingFromDataSource:(WebDataSource *)dataSource
+{}
+
+/**
  *  Provisional Fail
  *
  *  @param webView
@@ -456,9 +507,19 @@
 - (void)webView:(WebView *)webView didFailProvisionalLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
 {}
 
+/**
+ *  after provisionalLoadWithError
+ *
+ *  @param webView
+ *  @param resource
+ *  @param error
+ *  @param dataSource
+ */
+- (void)webView:(WebView *)webView resource:(NSMutableURLRequest *)resource didFailLoadingWithError:(NSError *)error fromDataSource:(WebDataSource *)dataSource
+{}
 
 /**
- *  The request is committed & start to load
+ *  Called after decidePolicyWithMIMEType & listener used
  *
  *  @param webView
  */
@@ -468,13 +529,59 @@
 }
 
 /**
+ *  Called when commit to load a frame
+ *
+ *  @param webView
+ *  @param frame
+ */
+- (void)webView:(WebView *)webView didCommitLoadForFrame:(WebFrame *)frame
+{}
+
+/**
+ *  Called after mainFrame is commited to load & did receive title
+ *
+ *  @param webView
+ *  @param title
+ *  @param frame
+ */
+- (void)webView:(WebView *)webView didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame
+{}
+
+/**
  *  MainFrame did load finish
  *
  *  @param webView
  */
 - (void)webViewMainFrameDidFinishLoad:(CCWebDocumentView *)webDocumentView
 {
-    [webDocumentView _updateSize];
+    //[webDocumentView _updateSize];
 }
 
+/**
+ *  did finish load for a frame
+ *
+ *  @param webView
+ *  @param frame
+ */
+- (void)webView:(WebView *)webView didFinishLoadForFrame:(WebFrame *)frame
+{}
+
+/**
+ *  mainFrame fail
+ *
+ *  @param webDocumentView //TODO: need check type
+ *  @param error           
+ */
+- (void)webViewMainFrameDidFailLoad:(CCWebDocumentView *)webDocumentView withError:(NSError *)error
+{}
+
+/**
+ *  Called after title received & finish load a frme
+ *
+ *  @param webView
+ *  @param object  type DOMAbstractView
+ *  @param frame
+ */
+- (void)webView:(WebView *)webView didClearWindowObject:(id)object forFrame:(WebFrame *)frame
+{}
 @end

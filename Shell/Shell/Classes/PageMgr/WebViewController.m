@@ -121,4 +121,45 @@ static NSInteger global_pageID = 0;
     [self.webView goForward];
 }
 
+#pragma mark - WebDelegate
+- (BOOL)webView:(UIWebViewEx *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    BOOL shouldLoad = YES;
+    return shouldLoad;
+}
+
+- (void)webViewDidStartLoad:(UIWebViewEx *)webView
+{
+    if ([self isActive])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:PageDidLoadNotification object:nil userInfo:nil];
+    }
+}
+
+- (void)webViewDidFinishLoad:(UIWebViewEx *)webView
+{
+    if ([self isActive])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:PageDidLoadNotification object:nil userInfo:nil];
+    }
+}
+
+- (void)webView:(UIWebViewEx *)webView didFailLoadWithError:(NSError *)error
+{
+    if ([self isActive])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:PageDidLoadNotification object:nil userInfo:nil];
+    }
+}
+
+- (void)webView:(UIWebViewEx *)webView loadingPercentageDidChange:(CGFloat)percentage
+{
+    if ([self isActive])
+    {
+        NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithFloat:percentage], KEY_LOAD_PERCENTAGE, nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PageLoadingPercentageChangedNotification object:nil userInfo:info];
+    }
+}
+
 @end

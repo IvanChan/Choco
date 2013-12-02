@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class UIWebViewEx;
 @protocol IWebViewDelegate <NSObject>
+
+- (BOOL)webView:(UIWebViewEx *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+
+- (void)webViewDidStartLoad:(UIWebViewEx *)webView;
+
+- (void)webViewDidFinishLoad:(UIWebViewEx *)webView;
+
+- (void)webView:(UIWebViewEx *)webView didFailLoadWithError:(NSError *)error;
+
+- (void)webView:(UIWebViewEx *)webView loadingPercentageDidChange:(CGFloat)percentage;
 
 @end

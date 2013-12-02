@@ -9,7 +9,7 @@
 #import "UIWebViewEx.h"
 #import "ChocoCore.h"
 
-//#define USING_UIWEBVIEW
+#define USING_UIWEBVIEW
 
 @interface UIWebViewEx () <CCWebViewDelegate, UIWebViewDelegate>
 {
@@ -71,7 +71,7 @@
     }
 }
 
--(void)setActive:(BOOL)active
+- (void)setActive:(BOOL)active
 {
     if (_active != active)
     {
@@ -173,6 +173,50 @@
 - (NSString *)title
 {
     return nil;
+}
+
+#pragma mark - Delegate
+- (BOOL)webView:(CCWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    BOOL result = YES;
+    if ([self.delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
+    {
+        result = [self.delegate webView:self shouldStartLoadWithRequest:request navigationType:navigationType];
+    }
+    
+    return result;
+}
+
+- (void)webViewDidStartLoad:(CCWebView *)webView
+{
+    if ([self.delegate respondsToSelector:@selector(webViewDidStartLoad:)])
+    {
+        [self.delegate webViewDidStartLoad:self];
+    }
+}
+    
+- (void)webViewDidFinishLoad:(CCWebView *)webView
+{
+    if ([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
+    {
+        [self.delegate webViewDidFinishLoad:self];
+    }
+}
+
+- (void)webView:(CCWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    if ([self.delegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
+    {
+        [self.delegate webView:self didFailLoadWithError:error];
+    }
+}
+
+- (void)webView:(UIWebViewEx *)webView loadingPercentageDidChange:(CGFloat)percentage
+{
+    if ([self.delegate respondsToSelector:@selector(webView:loadingPercentageDidChange:)])
+    {
+        [self.delegate webView:self loadingPercentageDidChange:percentage];
+    }
 }
 
 @end

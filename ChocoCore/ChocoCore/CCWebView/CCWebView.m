@@ -75,6 +75,8 @@
     //[[self webView] setDownloadDelegate:self];
     //[[self webView] setHistoryDelegate:self];
     
+    [self enableProgressChangeNotification:YES];
+    
     return (_webScrollView && _webBrowserView);
 }
 
@@ -286,6 +288,22 @@
     [[self webView] setCustomUserAgent:customUserAgent];
 }
 
+- (void)enableProgressChangeNotification:(BOOL)enable
+{
+    id coreWebView = [self webView];
+	if(enable)
+	{
+		//监视进度
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewProgressStepChange:)
+													 name:@"WebProgressEstimateChangedNotification"
+                                                   object:coreWebView];
+	}
+	else
+	{
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:@"WebProgressEstimateChangedNotification" object:coreWebView];
+	}
+}
+
 #pragma mark - Load Methods
 - (void)loadRequest:(NSURLRequest *)request
 {
@@ -362,6 +380,11 @@
 - (void)webViewMainFrameDidCommitLoad:(CCWebBrowserView *)webDocumentView
 {
     //[webDocumentView _updateSize];
+    
+    if ([self.delegate respondsToSelector:@selector(webViewDidStartLoad:)])
+    {
+        [self.delegate webViewDidStartLoad:self];
+    }
 }
 
 /**
@@ -372,6 +395,11 @@
 - (void)webViewMainFrameDidFinishLoad:(CCWebBrowserView *)webDocumentView
 {
     [webDocumentView _updateSize];
+    
+    if ([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
+    {
+        [self.delegate webViewDidFinishLoad:self];
+    }
 }
 
 /**
@@ -381,7 +409,12 @@
  *  @param error           
  */
 - (void)webViewMainFrameDidFailLoad:(CCWebDocumentView *)webDocumentView withError:(NSError *)error
-{}
+{
+    if ([self.delegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
+    {
+        [self.delegate webView:self didFailLoadWithError:error];
+    }
+}
 
 /**
  *  DocumentView notify the delegate when _updateSize was called
@@ -405,4 +438,15 @@
 
 - (void)webViewSupportedOrientationsUpdated:(id)arg0
 {}
+
+- (void)webViewProgressStepChange:(NSNotification *)notification
+{
+    id value = [[notification object] valueForKey:@"estimatedProgress"];
+    float step = [value floatValue];
+    
+    if ([self.delegate respondsToSelector:@selector(webView:loadingPercentageDidChange:)])
+    {
+		[self.delegate webView:self loadingPercentageDidChange:step];
+    }
+}
 @end

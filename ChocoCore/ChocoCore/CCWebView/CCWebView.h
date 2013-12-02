@@ -67,5 +67,6 @@
 - (void)webViewDidStartLoad:(CCWebView *)webView;
 - (void)webViewDidFinishLoad:(CCWebView *)webView;
 - (void)webView:(CCWebView *)webView didFailLoadWithError:(NSError *)error;
+- (void)webView:(CCWebView *)webView loadingPercentageDidChange:(CGFloat)percentage;
 
 @end

@@ -1,37 +1,31 @@
 //
 //  AppDelegate.m
-//  Choco
+//  testUIWebCore
 //
-//  Created by Chan Ivan on 11/29/13.
+//  Created by Chan Ivan on 7/19/13.
 //  Copyright (c) 2013 Chan Ivan. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "RootViewController.h"
+#import "ViewController.h"
 
 @implementation AppDelegate
 
 - (void)dealloc
 {
-    [_rootViewController release];
-    _rootViewController = nil;
-    
     [_window release];
-    _window = nil;
-    
+    [_viewController release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor colorWithRed:0.276 green:0.130 blue:0.132 alpha:1.000];
+    self.viewController = [[[ViewController alloc] init] autorelease];
+
+    self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-    
-    self.rootViewController = [[[RootViewController alloc] init] autorelease];
-    self.window.rootViewController = self.rootViewController;
-    
     return YES;
 }
 

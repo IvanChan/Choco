@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C152420184C3364007080D8 /* libShell.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C15241B184C3236007080D8 /* libShell.a */; };
+		2C152456184C4B4A007080D8 /* Add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152446184C4B4A007080D8 /* Add@2x.png */; };
+		2C152457184C4B4A007080D8 /* Backward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152447184C4B4A007080D8 /* Backward@2x.png */; };
+		2C152458184C4B4A007080D8 /* Backward_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152448184C4B4A007080D8 /* Backward_disabled@2x.png */; };
+		2C152459184C4B4A007080D8 /* Bookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152449184C4B4A007080D8 /* Bookmark@2x.png */; };
+		2C15245A184C4B4A007080D8 /* Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C15244A184C4B4A007080D8 /* Close@2x.png */; };
+		2C15245B184C4B4A007080D8 /* Download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C15244B184C4B4A007080D8 /* Download@2x.png */; };
+		2C15245C184C4B4A007080D8 /* Forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C15244C184C4B4A007080D8 /* Forward@2x.png */; };
+		2C15245D184C4B4A007080D8 /* Forward_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C15244D184C4B4A007080D8 /* Forward_disabled@2x.png */; };
+		2C15245E184C4B4A007080D8 /* Refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C15244E184C4B4A007080D8 /* Refresh@2x.png */; };
+		2C15245F184C4B4A007080D8 /* Segment_Left_Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C15244F184C4B4A007080D8 /* Segment_Left_Normal@2x.png */; };
+		2C152460184C4B4A007080D8 /* Segment_Left_Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152450184C4B4A007080D8 /* Segment_Left_Selected@2x.png */; };
+		2C152461184C4B4A007080D8 /* Segment_Right_Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152451184C4B4A007080D8 /* Segment_Right_Normal@2x.png */; };
+		2C152462184C4B4A007080D8 /* Segment_Right_Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152452184C4B4A007080D8 /* Segment_Right_Selected@2x.png */; };
+		2C152463184C4B4A007080D8 /* Stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152453184C4B4A007080D8 /* Stop@2x.png */; };
+		2C152464184C4B4A007080D8 /* Tabs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152454184C4B4A007080D8 /* Tabs@2x.png */; };
+		2C152465184C4B4A007080D8 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 2C152455184C4B4A007080D8 /* Thumbs.db */; };
 		2CC15EAA1848373900048C33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EA91848373900048C33 /* Foundation.framework */; };
 		2CC15EAC1848373900048C33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EAB1848373900048C33 /* CoreGraphics.framework */; };
 		2CC15EAE1848373900048C33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EAD1848373900048C33 /* UIKit.framework */; };
@@ -14,12 +31,23 @@
 		2CC15EB61848373900048C33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15EB51848373900048C33 /* main.m */; };
 		2CC15EBC1848373900048C33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC15EBB1848373900048C33 /* Images.xcassets */; };
 		2CC15F13184837B700048C33 /* libChocoCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15F10184837AC00048C33 /* libChocoCore.a */; };
-		2CC15F881848703F00048C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F851848703F00048C33 /* AppDelegate.m */; };
-		2CC15F891848703F00048C33 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F871848703F00048C33 /* RootViewController.m */; };
-		2CC15FAC1848A6AC00048C33 /* CocoaDebugTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15FAB1848A6AC00048C33 /* CocoaDebugTools.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2C15241A184C3236007080D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C152416184C3236007080D8 /* Shell.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C084A0717AA49B8000ABB4F;
+			remoteInfo = Shell;
+		};
+		2C152421184C3368007080D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C152416184C3236007080D8 /* Shell.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C084A0617AA49B8000ABB4F;
+			remoteInfo = Shell;
+		};
 		2CC15F0F184837AC00048C33 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2CC15F0A184837AB00048C33 /* ChocoCore.xcodeproj */;
@@ -37,6 +65,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C152416184C3236007080D8 /* Shell.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shell.xcodeproj; path = Shell/Shell.xcodeproj; sourceTree = "<group>"; };
+		2C152423184C3388007080D8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Shell/Shell/Classes/App/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		2C152446184C4B4A007080D8 /* Add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add@2x.png"; sourceTree = "<group>"; };
+		2C152447184C4B4A007080D8 /* Backward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Backward@2x.png"; sourceTree = "<group>"; };
+		2C152448184C4B4A007080D8 /* Backward_disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Backward_disabled@2x.png"; sourceTree = "<group>"; };
+		2C152449184C4B4A007080D8 /* Bookmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bookmark@2x.png"; sourceTree = "<group>"; };
+		2C15244A184C4B4A007080D8 /* Close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close@2x.png"; sourceTree = "<group>"; };
+		2C15244B184C4B4A007080D8 /* Download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Download@2x.png"; sourceTree = "<group>"; };
+		2C15244C184C4B4A007080D8 /* Forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forward@2x.png"; sourceTree = "<group>"; };
+		2C15244D184C4B4A007080D8 /* Forward_disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forward_disabled@2x.png"; sourceTree = "<group>"; };
+		2C15244E184C4B4A007080D8 /* Refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Refresh@2x.png"; sourceTree = "<group>"; };
+		2C15244F184C4B4A007080D8 /* Segment_Left_Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Segment_Left_Normal@2x.png"; sourceTree = "<group>"; };
+		2C152450184C4B4A007080D8 /* Segment_Left_Selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Segment_Left_Selected@2x.png"; sourceTree = "<group>"; };
+		2C152451184C4B4A007080D8 /* Segment_Right_Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Segment_Right_Normal@2x.png"; sourceTree = "<group>"; };
+		2C152452184C4B4A007080D8 /* Segment_Right_Selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Segment_Right_Selected@2x.png"; sourceTree = "<group>"; };
+		2C152453184C4B4A007080D8 /* Stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stop@2x.png"; sourceTree = "<group>"; };
+		2C152454184C4B4A007080D8 /* Tabs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tabs@2x.png"; sourceTree = "<group>"; };
+		2C152455184C4B4A007080D8 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
 		2CC15EA61848373900048C33 /* Choco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Choco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC15EA91848373900048C33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2CC15EAB1848373900048C33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -47,13 +93,6 @@
 		2CC15EB71848373900048C33 /* Choco-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Choco-Prefix.pch"; sourceTree = "<group>"; };
 		2CC15EBB1848373900048C33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2CC15F0A184837AB00048C33 /* ChocoCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChocoCore.xcodeproj; path = ChocoCore/ChocoCore.xcodeproj; sourceTree = "<group>"; };
-		2CC15F841848703F00048C33 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		2CC15F851848703F00048C33 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2CC15F861848703F00048C33 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		2CC15F871848703F00048C33 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		2CC15FA518487F7E00048C33 /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCWebView.h; path = ChocoCore/ChocoCore/CCWebView/CCWebView.h; sourceTree = SOURCE_ROOT; };
-		2CC15FAA1848A6AC00048C33 /* CocoaDebugTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugTools.h; sourceTree = "<group>"; };
-		2CC15FAB1848A6AC00048C33 /* CocoaDebugTools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CocoaDebugTools.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C152420184C3364007080D8 /* libShell.a in Frameworks */,
 				2CC15F13184837B700048C33 /* libChocoCore.a in Frameworks */,
 				2CC15EAC1848373900048C33 /* CoreGraphics.framework in Frameworks */,
 				2CC15EAE1848373900048C33 /* UIKit.framework in Frameworks */,
@@ -71,11 +111,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C152417184C3236007080D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C15241B184C3236007080D8 /* libShell.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C152445184C4B4A007080D8 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				2C152446184C4B4A007080D8 /* Add@2x.png */,
+				2C152447184C4B4A007080D8 /* Backward@2x.png */,
+				2C152448184C4B4A007080D8 /* Backward_disabled@2x.png */,
+				2C152449184C4B4A007080D8 /* Bookmark@2x.png */,
+				2C15244A184C4B4A007080D8 /* Close@2x.png */,
+				2C15244B184C4B4A007080D8 /* Download@2x.png */,
+				2C15244C184C4B4A007080D8 /* Forward@2x.png */,
+				2C15244D184C4B4A007080D8 /* Forward_disabled@2x.png */,
+				2C15244E184C4B4A007080D8 /* Refresh@2x.png */,
+				2C15244F184C4B4A007080D8 /* Segment_Left_Normal@2x.png */,
+				2C152450184C4B4A007080D8 /* Segment_Left_Selected@2x.png */,
+				2C152451184C4B4A007080D8 /* Segment_Right_Normal@2x.png */,
+				2C152452184C4B4A007080D8 /* Segment_Right_Selected@2x.png */,
+				2C152453184C4B4A007080D8 /* Stop@2x.png */,
+				2C152454184C4B4A007080D8 /* Tabs@2x.png */,
+				2C152455184C4B4A007080D8 /* Thumbs.db */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		2CC15E9D1848373900048C33 = {
 			isa = PBXGroup;
 			children = (
 				2CC15F0A184837AB00048C33 /* ChocoCore.xcodeproj */,
-				2CC15EAF1848373900048C33 /* Choco */,
+				2C152416184C3236007080D8 /* Shell.xcodeproj */,
+				2CC15EB01848373900048C33 /* Supporting Files */,
 				2CC15EA81848373900048C33 /* Frameworks */,
 				2CC15EA71848373900048C33 /* Products */,
 			);
@@ -99,19 +171,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2CC15EAF1848373900048C33 /* Choco */ = {
-			isa = PBXGroup;
-			children = (
-				2CC15FA418487F6700048C33 /* CCWebViewInc */,
-				2CC15F6A18485E6300048C33 /* Classes */,
-				2CC15EB01848373900048C33 /* Supporting Files */,
-			);
-			path = Choco;
-			sourceTree = "<group>";
-		};
 		2CC15EB01848373900048C33 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2C152445184C4B4A007080D8 /* images */,
+				2C152423184C3388007080D8 /* AppDelegate.h */,
 				2CC15EBB1848373900048C33 /* Images.xcassets */,
 				2CC15EB11848373900048C33 /* Choco-Info.plist */,
 				2CC15EB21848373900048C33 /* InfoPlist.strings */,
@@ -119,6 +183,7 @@
 				2CC15EB71848373900048C33 /* Choco-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = Choco;
 			sourceTree = "<group>";
 		};
 		2CC15F0B184837AB00048C33 /* Products */ = {
@@ -127,43 +192,6 @@
 				2CC15F10184837AC00048C33 /* libChocoCore.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2CC15F6A18485E6300048C33 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				2CC15FA91848A6AC00048C33 /* Debug */,
-				2CC15F831848703F00048C33 /* App */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		2CC15F831848703F00048C33 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				2CC15F841848703F00048C33 /* AppDelegate.h */,
-				2CC15F851848703F00048C33 /* AppDelegate.m */,
-				2CC15F861848703F00048C33 /* RootViewController.h */,
-				2CC15F871848703F00048C33 /* RootViewController.m */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		2CC15FA418487F6700048C33 /* CCWebViewInc */ = {
-			isa = PBXGroup;
-			children = (
-				2CC15FA518487F7E00048C33 /* CCWebView.h */,
-			);
-			name = CCWebViewInc;
-			sourceTree = "<group>";
-		};
-		2CC15FA91848A6AC00048C33 /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				2CC15FAA1848A6AC00048C33 /* CocoaDebugTools.h */,
-				2CC15FAB1848A6AC00048C33 /* CocoaDebugTools.mm */,
-			);
-			path = Debug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +209,7 @@
 			);
 			dependencies = (
 				2CC15F15184837BE00048C33 /* PBXTargetDependency */,
+				2C152422184C3368007080D8 /* PBXTargetDependency */,
 			);
 			name = Choco;
 			productName = Choco;
@@ -211,6 +240,10 @@
 					ProductGroup = 2CC15F0B184837AB00048C33 /* Products */;
 					ProjectRef = 2CC15F0A184837AB00048C33 /* ChocoCore.xcodeproj */;
 				},
+				{
+					ProductGroup = 2C152417184C3236007080D8 /* Products */;
+					ProjectRef = 2C152416184C3236007080D8 /* Shell.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -220,6 +253,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		2C15241B184C3236007080D8 /* libShell.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libShell.a;
+			remoteRef = 2C15241A184C3236007080D8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		2CC15F10184837AC00048C33 /* libChocoCore.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -236,6 +276,22 @@
 			files = (
 				2CC15EB41848373900048C33 /* InfoPlist.strings in Resources */,
 				2CC15EBC1848373900048C33 /* Images.xcassets in Resources */,
+				2C152464184C4B4A007080D8 /* Tabs@2x.png in Resources */,
+				2C15245E184C4B4A007080D8 /* Refresh@2x.png in Resources */,
+				2C15245A184C4B4A007080D8 /* Close@2x.png in Resources */,
+				2C152461184C4B4A007080D8 /* Segment_Right_Normal@2x.png in Resources */,
+				2C152465184C4B4A007080D8 /* Thumbs.db in Resources */,
+				2C152456184C4B4A007080D8 /* Add@2x.png in Resources */,
+				2C15245B184C4B4A007080D8 /* Download@2x.png in Resources */,
+				2C152458184C4B4A007080D8 /* Backward_disabled@2x.png in Resources */,
+				2C152462184C4B4A007080D8 /* Segment_Right_Selected@2x.png in Resources */,
+				2C15245D184C4B4A007080D8 /* Forward_disabled@2x.png in Resources */,
+				2C152460184C4B4A007080D8 /* Segment_Left_Selected@2x.png in Resources */,
+				2C15245F184C4B4A007080D8 /* Segment_Left_Normal@2x.png in Resources */,
+				2C152459184C4B4A007080D8 /* Bookmark@2x.png in Resources */,
+				2C15245C184C4B4A007080D8 /* Forward@2x.png in Resources */,
+				2C152463184C4B4A007080D8 /* Stop@2x.png in Resources */,
+				2C152457184C4B4A007080D8 /* Backward@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,16 +302,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CC15F881848703F00048C33 /* AppDelegate.m in Sources */,
 				2CC15EB61848373900048C33 /* main.m in Sources */,
-				2CC15F891848703F00048C33 /* RootViewController.m in Sources */,
-				2CC15FAC1848A6AC00048C33 /* CocoaDebugTools.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2C152422184C3368007080D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Shell;
+			targetProxy = 2C152421184C3368007080D8 /* PBXContainerItemProxy */;
+		};
 		2CC15F15184837BE00048C33 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ChocoCore;

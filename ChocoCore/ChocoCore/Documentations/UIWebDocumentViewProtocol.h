@@ -645,32 +645,32 @@
 - (void)stopLoading:(id)arg0 ;
 - (void)webView:(id)arg0 runOpenPanelForFileButtonWithResultListener:(id)arg1 allowMultipleFiles:(char)arg2 acceptMIMETypes:(id)arg3 ;
 - (void)webViewDidPreventDefaultForEvent:(id)arg0 ;
-- (void)webView:(id)arg0 didReceiveDocTypeForFrame:(id)arg1 ;
-- (void)webView:(id)arg0 needsScrollNotifications:(id)arg1 forFrame:(id)arg2 ;
-- (void)webView:(id)arg0 didObserveDeferredContentChange:(int)arg1 forFrame:(id)arg2 ;
-- (void)webView:(id)arg0 didReceiveViewportArguments:(id)arg1 forFrame:(id)arg2 ;
-- (void)revealedSelectionByScrollingWebFrame:(id)arg0 ;
-- (void)webThreadWebViewDidLayout:(id)arg0 byScrolling:(char)arg1 ;
-- (void)webViewDidStartOverflowScroll:(id)arg0 ;
-- (void)webViewDidEndOverflowScroll:(id)arg0 ;
-- (void)_webthread_webView:(id)arg0 attachRootLayer:(id)arg1 ;
-- (void)webViewDidCommitCompositingLayerChanges:(id)arg0 ;
-- (void)webView:(id)arg0 didCreateOrUpdateScrollingLayer:(id)arg1 withContentsLayer:(id)arg2 scrollSize:(id)arg3 forNode:(id)arg4 allowHorizontalScrollbar:(char)arg5 allowVerticalScrollbar:(char)arg6 ;
-- (void)webView:(id)arg0 willRemoveScrollingLayer:(id)arg1 withContentsLayer:(id)arg2 forNode:(id)arg3 ;
+- (void)webView:(id)arg0 didReceiveDocTypeForFrame:(id)arg1 ;//TODO:
+- (void)webView:(id)arg0 needsScrollNotifications:(id)arg1 forFrame:(id)arg2 ;//TODO:
+- (void)webView:(id)arg0 didObserveDeferredContentChange:(int)arg1 forFrame:(id)arg2 ;//TODO:
+- (void)webView:(id)arg0 didReceiveViewportArguments:(id)arg1 forFrame:(id)arg2 ;//TODO:
+- (void)revealedSelectionByScrollingWebFrame:(id)arg0 ;//TODO:
+- (void)webThreadWebViewDidLayout:(id)arg0 byScrolling:(char)arg1 ;//TODO:
+- (void)webViewDidStartOverflowScroll:(id)arg0 ;//TODO:
+- (void)webViewDidEndOverflowScroll:(id)arg0 ;//TODO:
+- (void)_webthread_webView:(id)arg0 attachRootLayer:(id)arg1 ;//TODO:
+- (void)webViewDidCommitCompositingLayerChanges:(id)arg0 ;//TODO:
+- (void)webView:(id)arg0 didCreateOrUpdateScrollingLayer:(id)arg1 withContentsLayer:(id)arg2 scrollSize:(id)arg3 forNode:(id)arg4 allowHorizontalScrollbar:(char)arg5 allowVerticalScrollbar:(char)arg6 ;//TODO:
+- (void)webView:(id)arg0 willRemoveScrollingLayer:(id)arg1 withContentsLayer:(id)arg2 forNode:(id)arg3 ;//TODO:
 - (id)supportedPasteboardTypesForCurrentSelection;
-- (id)undoManagerForWebView:(id)arg0 ;
+- (id)undoManagerForWebView:(id)arg0 ;//TODO:
 - (void)webView:(id)arg0 didCommitLoadForFrame:(id)arg1 ;
 - (void)webView:(id)arg0 didFinishLoadForFrame:(id)arg1 ;
 - (void)webView:(id)arg0 didFailLoadWithError:(id)arg1 forFrame:(id)arg2 ;
 - (void)webView:(id)arg0 didChangeLocationWithinPageForFrame:(id)arg1 ;
 - (void)webView:(id)arg0 didFirstVisuallyNonEmptyLayoutInFrame:(id)arg1 ;
-- (void)webView:(id)arg0 saveStateToHistoryItem:(id)arg1 forFrame:(id)arg2 ;
-- (void)webView:(id)arg0 restoreStateFromHistoryItem:(id)arg1 forFrame:(id)arg2 force:(char)arg3 ;
-- (char)webView:(id)arg0 shouldScrollToPoint:(CGPoint)arg1 forFrame:(id)arg2 ;
-- (void)webViewDidRestoreFromPageCache:(id)arg0 ;
+- (void)webView:(id)arg0 saveStateToHistoryItem:(id)arg1 forFrame:(id)arg2 ;//TODO:
+- (void)webView:(id)arg0 restoreStateFromHistoryItem:(id)arg1 forFrame:(id)arg2 force:(char)arg3 ;//TODO:
+- (char)webView:(id)arg0 shouldScrollToPoint:(CGPoint)arg1 forFrame:(id)arg2 ;//TODO:
+- (void)webViewDidRestoreFromPageCache:(id)arg0 ;//TODO:
 - (id)webView:(id)arg0 plugInViewWithArguments:(id)arg1 fromPlugInPackage:(id)arg2 ;
-- (void)webView:(id)arg0 willShowFullScreenForPlugInView:(id)arg1 ;
-- (void)webView:(id)arg0 didHideFullScreenForPlugInView:(id)arg1 ;
+- (void)webView:(id)arg0 willShowFullScreenForPlugInView:(id)arg1 ;//TODO:
+- (void)webView:(id)arg0 didHideFullScreenForPlugInView:(id)arg1 ;//TODO:
 - (void)addInputString:(id)arg0 fromVariantKey:(char)arg1 ;
 - (void)deleteFromInput;
 - (id)checkSpellingOfString:(id)arg0 ;
@@ -681,8 +681,8 @@
 - (char)performsTwoStepPaste:(id)arg0 ;
 - (int)getPasteboardChangeCount;
 - (char)isUnperturbedDictationResultMarker:(id)arg0 ;
-- (void)webView:(id)arg0 willAddPlugInView:(id)arg1 ;
-- (void)webViewDidDrawTiles:(id)arg0 ;
+- (void)webView:(id)arg0 willAddPlugInView:(id)arg1 ;//TODO:
+- (void)webViewDidDrawTiles:(id)arg0 ;//TODO:
 - (id)undoManager;
 - (void)setDrawsBackground:(char)arg0 ;
 - (id)selectedDOMRange;

@@ -10,12 +10,18 @@
 #import <objc/message.h>
 #import "CCWebBrowserView.h"
 #import "CCWebScrollView.h"
+#import "DefaultDelegateDefine.h"
 
 @interface CCWebView ()
 {
     CCWebBrowserView    *_webBrowserView;
     CCWebScrollView     *_webScrollView;
 }
+
+@property (nonatomic, retain) DefaultPolicyDelegate         *policyDelegateHandler;
+@property (nonatomic, retain) DefaultFrameLoadDelegate      *frameLoadDelegateHandler;
+@property (nonatomic, retain) DefaultResourceLoadDelegate   *resourceLoadDelegateHandler;
+@property (nonatomic, retain) DefaultUIDelegate             *UIDelegateHandler;
 
 @end
 
@@ -59,16 +65,11 @@
     //FIXME: according to UIWebView, should set this
     //_webDocumentView._editingDelegate = self;
     [_webScrollView addSubview:_webBrowserView];
-    
-    //FIXME: dont bind scrollView & documentView directly
-    [_webBrowserView addObserver:_webScrollView
-                       forKeyPath:@"frame" options:NSKeyValueObservingOptionNew
-                          context:nil];
-    
-    [[self webView] setUIDelegate:self];
-    [[self webView] setFrameLoadDelegate:self];
-    [[self webView] setResourceLoadDelegate:self];
-    [[self webView] setPolicyDelegate:self];
+
+    [[self webView] setUIDelegate:self.UIDelegateHandler];
+    [[self webView] setFrameLoadDelegate:self.frameLoadDelegateHandler];
+    [[self webView] setResourceLoadDelegate:self.resourceLoadDelegateHandler];
+    [[self webView] setPolicyDelegate:self.policyDelegateHandler];
     
     //TODO:
     //[[self webView] setDownloadDelegate:self];
@@ -79,13 +80,20 @@
 
 - (void)dealloc
 {
+    [[self webView] _clearDelegates];
     
-    [[self webView] setUIDelegate:nil];
-    [[self webView] setFrameLoadDelegate:nil];
-    [[self webView] setResourceLoadDelegate:nil];
-    [[self webView] setPolicyDelegate:nil];
+    [_policyDelegateHandler release];
+    _policyDelegateHandler = nil;
     
-    [_webBrowserView removeObserver:_webScrollView forKeyPath:@"frame"];
+    [_frameLoadDelegateHandler release];
+    _frameLoadDelegateHandler = nil;
+    
+    [_resourceLoadDelegateHandler release];
+    _resourceLoadDelegateHandler = nil;
+    
+    [_UIDelegateHandler release];
+    _UIDelegateHandler = nil;
+    
     _webBrowserView.delegate = nil;
     [_webBrowserView release];
     _webBrowserView = nil;
@@ -97,6 +105,46 @@
 }
 
 #pragma mark - Getters
+- (DefaultPolicyDelegate *)policyDelegateHandler
+{
+    if (_policyDelegateHandler == nil)
+    {
+        _policyDelegateHandler = [[DefaultPolicyDelegate alloc] initWithCCWebView:self];
+    }
+    
+    return _policyDelegateHandler;
+}
+
+- (DefaultFrameLoadDelegate *)frameLoadDelegateHandler
+{
+    if (_frameLoadDelegateHandler == nil)
+    {
+        _frameLoadDelegateHandler = [[DefaultFrameLoadDelegate alloc] initWithCCWebView:self];
+    }
+    
+    return _frameLoadDelegateHandler;
+}
+
+- (DefaultResourceLoadDelegate *)resourceLoadDelegateHandler
+{
+    if (_resourceLoadDelegateHandler == nil)
+    {
+        _resourceLoadDelegateHandler = [[DefaultResourceLoadDelegate alloc] initWithCCWebView:self];
+    }
+    
+    return _resourceLoadDelegateHandler;
+}
+
+- (DefaultUIDelegate *)UIDelegateHandler
+{
+    if (_UIDelegateHandler == nil)
+    {
+        _UIDelegateHandler = [[DefaultUIDelegate alloc] initWithCCWebView:self];
+    }
+    
+    return _UIDelegateHandler;
+}
+
 - (CCWebBrowserView *)browserView
 {
     return _webBrowserView;
@@ -182,6 +230,11 @@
     return 0;
 }
 
+-(NSString *)customUserAgent
+{
+    return [[self webView] customUserAgent];
+}
+
 #pragma mark - Setters
 - (void)setScalesPageToFit:(BOOL)scalesPageToFit
 {}
@@ -227,6 +280,11 @@
 
 - (void)setGapBetweenPages:(CGFloat)gapBetweenPages
 {}
+
+-(void)setCustomUserAgent:(NSString *)customUserAgent
+{
+    [[self webView] setCustomUserAgent:customUserAgent];
+}
 
 #pragma mark - Load Methods
 - (void)loadRequest:(NSURLRequest *)request
@@ -282,63 +340,47 @@
 }
 
 #pragma mark - Delegate
-- (void)webView:(id)arg0 decidePolicyForGeolocationRequestFromOrigin:(id)arg1 frame:(id)arg2 listener:(id)arg3
-{}
-
-- (void)webView:(id)arg0 didFailLoadWithError:(id)arg1 forFrame:(id)arg2
-{}
-
-- (void)webView:(id)arg0 didChangeLocationWithinPageForFrame:(id)arg1
-{}
-
-- (void)webView:(id)arg0 unableToImplementPolicyWithError:(id)arg1 frame:(id)arg2
-{}
-
-- (void)webView:(id)arg0 resource:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2 fromDataSource:(id)arg3
-{}
-
-- (void)webView:(id)arg0 resource:(id)arg1 didCancelAuthenticationChallenge:(id)arg2 fromDataSource:(id)arg3
-{}
-
-- (BOOL)webView:(id)arg0 resource:(id)arg1 canAuthenticateAgainstProtectionSpace:(id)arg2 forDataSource:(id)arg3
-{
-    return YES;
-}
-
-- (id)webView:(id)arg0 createWebViewWithRequest:(id)arg1
-{
+/**
+ *  Called after willsentRequest, maybe just mainFrame
+ *
+ *  @param webView
+ *  @param resource
+ *  @param dataSource
+ *
+ *  @return TODO:need check return typ
+ */
+- (NSURLRequest *)webView:(WebView *)webView connectionPropertiesForResource:(NSMutableURLRequest *)resource dataSource:(WebDataSource *)dataSource
+{//FIXME: return resource will lead to some kindof error, the load process stop
     return nil;
 }
 
-- (void)webViewClose:(id)arg0
-{}
-
-- (void)webView:(id)arg0 runJavaScriptAlertPanelWithMessage:(id)arg1 initiatedByFrame:(id)arg2
-{}
-
-- (char)webView:(id)arg0 runJavaScriptConfirmPanelWithMessage:(id)arg1 initiatedByFrame:(id)arg2
+/**
+ *  Called after decidePolicyWithMIMEType & listener used
+ *
+ *  @param webView
+ */
+- (void)webViewMainFrameDidCommitLoad:(CCWebBrowserView *)webDocumentView
 {
-    return NO;
+    //[webDocumentView _updateSize];
 }
 
-- (id)webView:(id)arg0 runJavaScriptTextInputPanelWithPrompt:(id)arg1 defaultText:(id)arg2 initiatedByFrame:(id)arg3
+/**
+ *  MainFrame did load finish
+ *
+ *  @param webView
+ */
+- (void)webViewMainFrameDidFinishLoad:(CCWebBrowserView *)webDocumentView
 {
-    return nil;
+    [webDocumentView _updateSize];
 }
 
-- (void)webView:(id)arg0 printFrameView:(id)arg1
-{}
-
-- (void)webView:(id)arg0 frame:(id)arg1 exceededDatabaseQuotaForSecurityOrigin:(id)arg2 database:(id)arg3
-{}
-
-- (void)webView:(id)arg0 exceededApplicationCacheOriginQuotaForSecurityOrigin:(id)arg1 totalSpaceNeeded:(unsigned int)arg2
-{}
-
-- (void)webViewSupportedOrientationsUpdated:(id)arg0
-{}
-
-- (void)_webViewCommonInitWithWebView:(id)arg0 scalesPageToFit:(char)arg1 shouldEnableReachability:(char)arg2
+/**
+ *  mainFrame fail
+ *
+ *  @param webDocumentView //TODO: need check type
+ *  @param error           
+ */
+- (void)webViewMainFrameDidFailLoad:(CCWebDocumentView *)webDocumentView withError:(NSError *)error
 {}
 
 /**
@@ -361,227 +403,6 @@
     }
 }
 
-#pragma mark - Delegate
-/**
- *  first layout in frame
- *
- *  @param webView WebView obj
- *  @param frame   WebFrame obj
- */
-- (void)webView:(WebView *)webView didFirstLayoutInFrame:(WebFrame *)frame
-{}
-
-/**
- *  decide policy for navigation
- *
- *  @param webView
- *  @param action
- *  @param request
- *  @param frame
- *  @param listener must call use/ignore/download
- */
-- (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)action request:(NSMutableURLRequest *)request frame:(WebFrame *)frame decisionListener:(WebFramePolicyListener *)listener
-{
-//    UIWebURLAction:
-//
-//    + (char)performDefaultActionForURL:(id)arg0 andDOMNode:(id)arg1 withAllowedTypes:(unsigned int)arg2 forFrame:(id)arg3 inView:(id)arg4 ;
-//    + (void)performDataDetectorsDefaultActionForDOMNode:(id)arg0 forFrame:(id)arg1 inView:(id)arg2 ;
-    
-    //"performDefaultActionForURL:andDOMNode:withAllowedTypes:forFrame:inView:"
-    //"_canHandleRequest:"
-    
-//    Class uiwebURLActionCls = NSClassFromString(@"UIWebURLAction");
-//    [uiwebURLActionCls performDefaultActionForURL:[request URL] andDOMNode:nil withAllowedTypes:-3 forFrame:frame inView:self];
-    
-    [listener use];
-}
-
-/**
- *  decied policy for newWindow
- *
- *  @param webView
- *  @param action
- *  @param request
- *  @param newFrameName
- *  @param listener
- */
-- (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)action request:(NSMutableURLRequest *)request newFrameName:(NSString *)newFrameName decisionListener:(WebFramePolicyListener *)listener
-{
-    [self webView:webView decidePolicyForNavigationAction:action request:request frame:[[self webView] mainFrame] decisionListener:listener];
-}
-
-/**
- *  start provisional load
- *
- *  @param webView
- *  @param frame
- */
-- (void)webView:(WebView *)webView didStartProvisionalLoadForFrame:(WebFrame *)frame
-{}
-
-/**
- *  identifier request
- *
- *  @param webView
- *  @param request
- *  @param dataSource
- *
- *  @return TODO: check if return NSURLRequest
- */
-- (NSURLRequest *)webView:(WebView *)webView identifierForInitialRequest:(NSMutableURLRequest *)request fromDataSource:(WebDataSource *)dataSource
-{
-    return request;
-}
-
-
-/**
- *  Called after identifierForInitialRequest
- *
- *  @param webView
- *  @param arg1       TODO:check type
- *  @param request
- *  @param arg3       TODO:check type
- *  @param dataSource
- *
- *  @return TODO: check if return NSURLRequest
- */
-- (NSURLRequest *)webView:(WebView *)webView resource:(id)arg1 willSendRequest:(NSMutableURLRequest *)request redirectResponse:(id)arg3 fromDataSource:(WebDataSource *)dataSource
-{
-    return request;
-}
-
-/**
- *  Called after willsentRequest, maybe just mainFrame
- *
- *  @param webView
- *  @param resource
- *  @param dataSource
- *
- *  @return TODO:need check return typ
- */
-- (NSURLRequest *)webView:(WebView *)webView connectionPropertiesForResource:(NSMutableURLRequest *)resource dataSource:(WebDataSource *)dataSource
-{//FIXME: return resource will lead to some kindof error, the load process stop
-    return nil;
-}
-
-/**
- *  Will lead to decidePolicyForNavigationAction again
- *
- *  @param webView
- *  @param frame
- */
-- (void)webView:(WebView *)webView didReceiveServerRedirectForProvisionalLoadForFrame:(WebFrame *)frame
-{}
-
-/**
- *  after provisonal load, this method called after decidePolicyForNavigationAction
- *
- *  @param webView
- *  @param MIMEType
- *  @param request
- *  @param frame
- *  @param listener
- */
-- (void)webView:(WebView *)webView decidePolicyForMIMEType:(NSString *)MIMEType request:(NSMutableURLRequest *)request frame:(WebFrame *)frame decisionListener:(WebFramePolicyListener *)listener
-{
-    [listener use];
-}
-
-/**
- *  Called after each resource request sent & finished load
- *
- *  @param webView
- *  @param resource
- *  @param dataSource
- */
-- (void)webView:(WebView *)webView resource:(NSMutableURLRequest *)resource didFinishLoadingFromDataSource:(WebDataSource *)dataSource
-{}
-
-/**
- *  Provisional Fail
- *
- *  @param webView
- *  @param error
- *  @param frame   
- */
-- (void)webView:(WebView *)webView didFailProvisionalLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
-{}
-
-/**
- *  after provisionalLoadWithError
- *
- *  @param webView
- *  @param resource
- *  @param error
- *  @param dataSource
- */
-- (void)webView:(WebView *)webView resource:(NSMutableURLRequest *)resource didFailLoadingWithError:(NSError *)error fromDataSource:(WebDataSource *)dataSource
-{}
-
-/**
- *  Called after decidePolicyWithMIMEType & listener used
- *
- *  @param webView
- */
-- (void)webViewMainFrameDidCommitLoad:(CCWebDocumentView *)webDocumentView
-{
-    //[webDocumentView _updateSize];
-}
-
-/**
- *  Called when commit to load a frame
- *
- *  @param webView
- *  @param frame
- */
-- (void)webView:(WebView *)webView didCommitLoadForFrame:(WebFrame *)frame
-{}
-
-/**
- *  Called after mainFrame is commited to load & did receive title
- *
- *  @param webView
- *  @param title
- *  @param frame
- */
-- (void)webView:(WebView *)webView didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame
-{}
-
-/**
- *  MainFrame did load finish
- *
- *  @param webView
- */
-- (void)webViewMainFrameDidFinishLoad:(CCWebDocumentView *)webDocumentView
-{
-    //[webDocumentView _updateSize];
-}
-
-/**
- *  did finish load for a frame
- *
- *  @param webView
- *  @param frame
- */
-- (void)webView:(WebView *)webView didFinishLoadForFrame:(WebFrame *)frame
-{}
-
-/**
- *  mainFrame fail
- *
- *  @param webDocumentView //TODO: need check type
- *  @param error           
- */
-- (void)webViewMainFrameDidFailLoad:(CCWebDocumentView *)webDocumentView withError:(NSError *)error
-{}
-
-/**
- *  Called after title received & finish load a frme
- *
- *  @param webView
- *  @param object  type DOMAbstractView
- *  @param frame
- */
-- (void)webView:(WebView *)webView didClearWindowObject:(id)object forFrame:(WebFrame *)frame
+- (void)webViewSupportedOrientationsUpdated:(id)arg0
 {}
 @end

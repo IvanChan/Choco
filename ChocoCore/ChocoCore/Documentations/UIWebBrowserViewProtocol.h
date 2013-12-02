@@ -156,7 +156,7 @@
 - (void)setAccessoryEnabled:(char)arg0;
 - (char)hasEditedTextField;
 - (void)webView:(id)arg0 addMessageToConsole:(id)arg1 withSource:(id)arg2;
-- (void)webViewDidPreventDefaultForEvent:(id)arg0;
+- (void)webViewDidPreventDefaultForEvent:(id)arg0;//UIKit Delegate
 - (void)webView:(id)arg0 elementDidFocusNode:(id)arg1;
 - (void)webView:(id)arg0 elementDidBlurNode:(id)arg1;
 - (void)webView:(id)arg0 didStartProvisionalLoadForFrame:(id)arg1;

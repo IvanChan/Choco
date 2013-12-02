@@ -56,6 +56,8 @@
 @property (nonatomic) CGFloat gapBetweenPages NS_AVAILABLE_IOS(7_0);
 @property (nonatomic, readonly) NSUInteger pageCount NS_AVAILABLE_IOS(7_0);
 
+@property (nonatomic, retain) NSString *customUserAgent;
+
 @end
 
 @protocol CCWebViewDelegate <NSObject>

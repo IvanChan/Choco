@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C15240B184C2C84007080D8 /* DefaultFrameLoadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C152406184C2C84007080D8 /* DefaultFrameLoadDelegate.m */; };
+		2C15240C184C2C84007080D8 /* DefaultResourceLoadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C152408184C2C84007080D8 /* DefaultResourceLoadDelegate.m */; };
+		2C15240D184C2C84007080D8 /* DefaultUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C15240A184C2C84007080D8 /* DefaultUIDelegate.m */; };
+		2C152411184C2D76007080D8 /* DefaultDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C152410184C2D76007080D8 /* DefaultDelegate.m */; };
+		2C152415184C2E94007080D8 /* DefaultPolicyDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C152414184C2E94007080D8 /* DefaultPolicyDelegate.m */; };
 		2CC15EE5184837AB00048C33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EE4184837AB00048C33 /* Foundation.framework */; };
 		2CC15EEA184837AB00048C33 /* ChocoCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CC15EE9184837AB00048C33 /* ChocoCore.h */; };
 		2CC15F17184837FD00048C33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15F16184837FD00048C33 /* UIKit.framework */; };
@@ -32,6 +37,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2C152405184C2C84007080D8 /* DefaultFrameLoadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultFrameLoadDelegate.h; sourceTree = "<group>"; };
+		2C152406184C2C84007080D8 /* DefaultFrameLoadDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultFrameLoadDelegate.m; sourceTree = "<group>"; };
+		2C152407184C2C84007080D8 /* DefaultResourceLoadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultResourceLoadDelegate.h; sourceTree = "<group>"; };
+		2C152408184C2C84007080D8 /* DefaultResourceLoadDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultResourceLoadDelegate.m; sourceTree = "<group>"; };
+		2C152409184C2C84007080D8 /* DefaultUIDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultUIDelegate.h; sourceTree = "<group>"; };
+		2C15240A184C2C84007080D8 /* DefaultUIDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultUIDelegate.m; sourceTree = "<group>"; };
+		2C15240E184C2CDA007080D8 /* WebViewDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewDefine.h; sourceTree = "<group>"; };
+		2C15240F184C2D76007080D8 /* DefaultDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultDelegate.h; sourceTree = "<group>"; };
+		2C152410184C2D76007080D8 /* DefaultDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultDelegate.m; sourceTree = "<group>"; };
+		2C152412184C2DB6007080D8 /* DefaultDelegateDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultDelegateDefine.h; sourceTree = "<group>"; };
+		2C152413184C2E94007080D8 /* DefaultPolicyDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultPolicyDelegate.h; sourceTree = "<group>"; };
+		2C152414184C2E94007080D8 /* DefaultPolicyDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultPolicyDelegate.m; sourceTree = "<group>"; };
 		2CC15EE1184837AB00048C33 /* libChocoCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libChocoCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC15EE4184837AB00048C33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2CC15EE8184837AB00048C33 /* ChocoCore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChocoCore-Prefix.pch"; sourceTree = "<group>"; };
@@ -70,10 +87,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C152404184C2C84007080D8 /* DefaultDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2C152412184C2DB6007080D8 /* DefaultDelegateDefine.h */,
+				2C15240F184C2D76007080D8 /* DefaultDelegate.h */,
+				2C152410184C2D76007080D8 /* DefaultDelegate.m */,
+				2C152413184C2E94007080D8 /* DefaultPolicyDelegate.h */,
+				2C152414184C2E94007080D8 /* DefaultPolicyDelegate.m */,
+				2C152405184C2C84007080D8 /* DefaultFrameLoadDelegate.h */,
+				2C152406184C2C84007080D8 /* DefaultFrameLoadDelegate.m */,
+				2C152407184C2C84007080D8 /* DefaultResourceLoadDelegate.h */,
+				2C152408184C2C84007080D8 /* DefaultResourceLoadDelegate.m */,
+				2C152409184C2C84007080D8 /* DefaultUIDelegate.h */,
+				2C15240A184C2C84007080D8 /* DefaultUIDelegate.m */,
+			);
+			name = DefaultDelegate;
+			path = ChocoCore/DefaultDelegate;
+			sourceTree = "<group>";
+		};
 		2CC15ED8184837AB00048C33 = {
 			isa = PBXGroup;
 			children = (
 				2CC15EE6184837AB00048C33 /* ChocoCore */,
+				2C152404184C2C84007080D8 /* DefaultDelegate */,
 				2CC15EE7184837AB00048C33 /* Supporting Files */,
 				2CC15EE3184837AB00048C33 /* Frameworks */,
 				2CC15EE2184837AB00048C33 /* Products */,
@@ -132,6 +169,7 @@
 				2CC15F7D18486A2600048C33 /* UIWebDocumentViewProtocol.h */,
 				2CC15F7118485EAC00048C33 /* CCWebDocumentView.h */,
 				2CC15F7218485EAC00048C33 /* CCWebDocumentView.m */,
+				2C15240E184C2CDA007080D8 /* WebViewDefine.h */,
 			);
 			path = Documentations;
 			sourceTree = "<group>";
@@ -205,10 +243,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C15240C184C2C84007080D8 /* DefaultResourceLoadDelegate.m in Sources */,
+				2C152415184C2E94007080D8 /* DefaultPolicyDelegate.m in Sources */,
+				2C15240D184C2C84007080D8 /* DefaultUIDelegate.m in Sources */,
 				2CC15F7F18486E9C00048C33 /* CCWebBrowserView.m in Sources */,
 				2CC15F7B184868EF00048C33 /* CCWebScrollView.m in Sources */,
+				2C152411184C2D76007080D8 /* DefaultDelegate.m in Sources */,
 				2CC15F7C184869EF00048C33 /* CCWebDocumentView.m in Sources */,
 				2CC15F7818485F5500048C33 /* CCWebView.m in Sources */,
+				2C15240B184C2C84007080D8 /* DefaultFrameLoadDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

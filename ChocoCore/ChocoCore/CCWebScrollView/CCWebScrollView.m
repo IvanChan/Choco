@@ -25,10 +25,4 @@
     [super dealloc];
 }
 
-#pragma mark - Observer
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{//FIXME: bad to bind WebScrollView & WebDocumentView togother
-
-}
-
 @end

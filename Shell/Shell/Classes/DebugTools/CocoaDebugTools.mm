@@ -226,7 +226,7 @@ void _printMethods(Class cls)
             }
         }
         
-        printf("%s; \n", [methodStr UTF8String]);
+        printf("%s{} \n", [methodStr UTF8String]);
         
         [methodStr release];
         free(returnType);

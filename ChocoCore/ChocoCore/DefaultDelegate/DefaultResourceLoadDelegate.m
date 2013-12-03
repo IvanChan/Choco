@@ -256,4 +256,30 @@
     return YES;
 }
 
+
+#pragma mark - Runtime Found
+- (id)webView:(WebView *)webView connectionPropertiesForResource:(NSMutableURLRequest *)resource dataSource:(WebDataSource *)dataSource
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:connectionPropertiesForResource:dataSource:)])
+    {
+        return [documentView webView:webView connectionPropertiesForResource:resource dataSource:dataSource];
+    }
+    
+    return nil;
+}
+
+- (id)webView:(WebView *)webView resource:(id)resource willCacheResponse:(NSURLResponse *)response fromDataSource:(WebDataSource *)dataSource
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:resource:willCacheResponse:fromDataSource:)])
+    {
+        return [documentView webView:webView resource:resource willCacheResponse:response fromDataSource:dataSource];
+    }
+    
+    return nil;
+}
+
 @end

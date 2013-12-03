@@ -30,7 +30,6 @@
 		2C084A6417AA49E9000ABB4F /* TopbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C084A5117AA49E9000ABB4F /* TopbarView.m */; };
 		2C084A6817AA4A1B000ABB4F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C084A6617AA4A13000ABB4F /* UIKit.framework */; };
 		2C084AA417AA5D7B000ABB4F /* UIWebCoreFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C084A5517AA49E9000ABB4F /* UIWebCoreFactory.m */; };
-		2C15241F184C3284007080D8 /* CocoaDebugTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2C15241E184C3284007080D8 /* CocoaDebugTools.mm */; };
 		2C152428184C347B007080D8 /* UIWebViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C152427184C347B007080D8 /* UIWebViewEx.m */; };
 /* End PBXBuildFile section */
 
@@ -98,8 +97,8 @@
 		2C084A6617AA4A13000ABB4F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2C15241D184C3284007080D8 /* CocoaDebugTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugTools.h; sourceTree = "<group>"; };
 		2C15241E184C3284007080D8 /* CocoaDebugTools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CocoaDebugTools.mm; sourceTree = "<group>"; };
-		2C152424184C33CE007080D8 /* ChocoCore.h */ = {isa = PBXFileReference; lastKnownFileType = file; name = ChocoCore.h; path = ../ChocoCore/ChocoCore/ChocoCore.h; sourceTree = "<group>"; };
-		2C152425184C340E007080D8 /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = CCWebView.h; path = ../ChocoCore/ChocoCore/CCWebView/CCWebView.h; sourceTree = "<group>"; };
+		2C152424184C33CE007080D8 /* ChocoCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChocoCore.h; path = ../ChocoCore/ChocoCore/ChocoCore.h; sourceTree = "<group>"; };
+		2C152425184C340E007080D8 /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCWebView.h; path = ../ChocoCore/ChocoCore/CCWebView/CCWebView.h; sourceTree = "<group>"; };
 		2C152426184C347B007080D8 /* UIWebViewEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewEx.h; sourceTree = "<group>"; };
 		2C152427184C347B007080D8 /* UIWebViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewEx.m; sourceTree = "<group>"; };
 		2C152429184C34D7007080D8 /* IWebViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IWebViewDelegate.h; sourceTree = "<group>"; };
@@ -389,7 +388,6 @@
 				2C084A5C17AA49E9000ABB4F /* TabbarView.m in Sources */,
 				2C084A5D17AA49E9000ABB4F /* TabItemView.m in Sources */,
 				2C084A5E17AA49E9000ABB4F /* TabItem.m in Sources */,
-				2C15241F184C3284007080D8 /* CocoaDebugTools.mm in Sources */,
 				2C084A5F17AA49E9000ABB4F /* TabsTableController.m in Sources */,
 				2C04148D17AC96DB0007BB87 /* BookmarkView.m in Sources */,
 				2C084A6017AA49E9000ABB4F /* TabsTableView.m in Sources */,

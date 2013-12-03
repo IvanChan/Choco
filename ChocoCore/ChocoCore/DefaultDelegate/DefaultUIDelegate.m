@@ -847,4 +847,192 @@
     }
 }
 
+#pragma mark - Runtime Found
+- (void)webViewFocus:(WebView *)webView
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webViewFocus:)])
+    {
+        [documentView webViewFocus:webView];
+    }
+}
+
+- (void)webViewUnfocus:(WebView *)webView
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webViewUnfocus:)])
+    {
+        [documentView webViewUnfocus:webView];
+    }
+}
+
+- (void)webView:(WebView *)webView setToolbarsVisible:(BOOL)visible
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:setToolbarsVisible:)])
+    {
+        [documentView webView:webView setToolbarsVisible:visible];
+    }
+}
+
+- (BOOL)webViewAreToolbarsVisible:(id)arg0
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webViewAreToolbarsVisible:)])
+    {
+        return [documentView webViewAreToolbarsVisible:arg0];
+    }
+    
+    return NO;
+}
+
+- (void)webView:(WebView *)webView setStatusBarVisible:(BOOL)visible
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:setStatusBarVisible:)])
+    {
+        [documentView webView:webView setStatusBarVisible:visible];
+    }
+}
+
+- (char)webViewIsStatusBarVisible:(id)arg0
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webViewIsStatusBarVisible:)])
+    {
+        return [documentView webViewIsStatusBarVisible:arg0];
+    }
+    
+    return NO;
+}
+
+- (void)webView:(WebView *)webView setResizable:(char)arg1
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:setResizable:)])
+    {
+        [documentView webView:webView setResizable:arg1];
+    }
+}
+
+- (char)webViewIsResizable:(id)arg0
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webViewIsResizable:)])
+    {
+        return [documentView webViewIsResizable:arg0];
+    }
+    
+    return NO;
+}
+
+- (void)webView:(WebView *)webView setStatusText:(id)arg1
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:setStatusText:)])
+    {
+        [documentView webView:webView setStatusText:arg1];
+    }
+}
+
+- (void)webView:(WebView *)webView printFrameView:(id)arg1
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:printFrameView:)])
+    {
+        [documentView webView:webView printFrameView:arg1];
+    }
+}
+
+- (id)webViewFirstResponder:(id)arg0
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webViewFirstResponder:)])
+    {
+        return [documentView webViewFirstResponder:arg0];
+    }
+    
+    return nil;
+}
+
+- (void)webView:(WebView *)webView makeFirstResponder:(id)arg1
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:makeFirstResponder:)])
+    {
+        [documentView webView:webView makeFirstResponder:arg1];
+    }
+}
+
+- (void)webView:(WebView *)webView setFrame:(CGRect)arg1
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:setFrame:)])
+    {
+        [documentView webView:webView setFrame:arg1];
+    }
+}
+
+- (CGRect)webViewFrame:(id)arg0
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webViewFrame:)])
+    {
+        return [documentView webViewFrame:arg0];
+    }
+    
+    return CGRectZero;
+}
+
+- (void)webViewSupportedOrientationsUpdated:(id)arg0
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webViewSupportedOrientationsUpdated:)])
+    {
+       [documentView webViewSupportedOrientationsUpdated:arg0];
+    }
+    
+}
+
+- (id)webView:(WebView *)webView createWebViewWithRequest:(id)arg1 userGesture:(char)arg2
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:createWebViewWithRequest:userGesture:)])
+    {
+        return [documentView webView:webView createWebViewWithRequest:arg1 userGesture:arg2];
+    }
+    
+    return nil;
+}
+
+- (id)webViewStatusText:(id)arg0
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webViewStatusText:)])
+    {
+        return [documentView webViewStatusText:arg0];
+    }
+    
+    return nil;
+}
+
+
+
 @end

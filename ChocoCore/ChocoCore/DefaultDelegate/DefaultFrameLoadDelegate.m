@@ -397,4 +397,35 @@
     }
 }
 
+#pragma mark - Runtime Found
+- (void)webView:(WebView *)webView didFinishDocumentLoadForFrame:(WebFrame *)frame
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:didFinishDocumentLoadForFrame:)])
+    {
+        [documentView webView:webView didFinishDocumentLoadForFrame:frame];
+    }
+}
+
+- (void)webView:(WebView *)webView didHandleOnloadEventsForFrame:(WebFrame *)frame
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:didHandleOnloadEventsForFrame:)])
+    {
+        [documentView webView:webView didHandleOnloadEventsForFrame:frame];
+    }
+}
+
+- (void)webView:(WebView *)webView didClearInspectorWindowObject:(id)windowObj forFrame:(WebFrame *)frame
+{
+    id documentView = [self.ccWebView documentView];
+    
+    if ([documentView respondsToSelector:@selector(webView:didClearInspectorWindowObject:forFrame:)])
+    {
+        [documentView webView:webView didClearInspectorWindowObject:windowObj forFrame:frame];
+    }
+}
+
 @end

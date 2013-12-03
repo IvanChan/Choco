@@ -9,7 +9,7 @@
 #import "UIWebViewEx.h"
 #import "ChocoCore.h"
 
-#define USING_UIWEBVIEW
+//#define USING_UIWEBVIEW
 
 @interface UIWebViewEx () <CCWebViewDelegate, UIWebViewDelegate>
 {

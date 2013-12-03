@@ -24,6 +24,8 @@
 		2C152463184C4B4A007080D8 /* Stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152453184C4B4A007080D8 /* Stop@2x.png */; };
 		2C152464184C4B4A007080D8 /* Tabs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C152454184C4B4A007080D8 /* Tabs@2x.png */; };
 		2C152465184C4B4A007080D8 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 2C152455184C4B4A007080D8 /* Thumbs.db */; };
+		2C6FDB35184DB33A00F45D60 /* CocoaDebugTools.h in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FDB34184DB33A00F45D60 /* CocoaDebugTools.h */; };
+		2C6FDB38184DB48100F45D60 /* CocoaDebugTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FDB37184DB48100F45D60 /* CocoaDebugTools.mm */; };
 		2CC15EAA1848373900048C33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EA91848373900048C33 /* Foundation.framework */; };
 		2CC15EAC1848373900048C33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EAB1848373900048C33 /* CoreGraphics.framework */; };
 		2CC15EAE1848373900048C33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC15EAD1848373900048C33 /* UIKit.framework */; };
@@ -83,6 +85,8 @@
 		2C152453184C4B4A007080D8 /* Stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stop@2x.png"; sourceTree = "<group>"; };
 		2C152454184C4B4A007080D8 /* Tabs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tabs@2x.png"; sourceTree = "<group>"; };
 		2C152455184C4B4A007080D8 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
+		2C6FDB34184DB33A00F45D60 /* CocoaDebugTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = CocoaDebugTools.h; path = ../Shell/Shell/Classes/DebugTools/CocoaDebugTools.h; sourceTree = "<group>"; };
+		2C6FDB37184DB48100F45D60 /* CocoaDebugTools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CocoaDebugTools.mm; path = Shell/Shell/Classes/DebugTools/CocoaDebugTools.mm; sourceTree = SOURCE_ROOT; };
 		2CC15EA61848373900048C33 /* Choco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Choco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC15EA91848373900048C33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2CC15EAB1848373900048C33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -176,6 +180,8 @@
 			children = (
 				2C152445184C4B4A007080D8 /* images */,
 				2C152423184C3388007080D8 /* AppDelegate.h */,
+				2C6FDB34184DB33A00F45D60 /* CocoaDebugTools.h */,
+				2C6FDB37184DB48100F45D60 /* CocoaDebugTools.mm */,
 				2CC15EBB1848373900048C33 /* Images.xcassets */,
 				2CC15EB11848373900048C33 /* Choco-Info.plist */,
 				2CC15EB21848373900048C33 /* InfoPlist.strings */,
@@ -283,6 +289,7 @@
 				2C152465184C4B4A007080D8 /* Thumbs.db in Resources */,
 				2C152456184C4B4A007080D8 /* Add@2x.png in Resources */,
 				2C15245B184C4B4A007080D8 /* Download@2x.png in Resources */,
+				2C6FDB35184DB33A00F45D60 /* CocoaDebugTools.h in Resources */,
 				2C152458184C4B4A007080D8 /* Backward_disabled@2x.png in Resources */,
 				2C152462184C4B4A007080D8 /* Segment_Right_Selected@2x.png in Resources */,
 				2C15245D184C4B4A007080D8 /* Forward_disabled@2x.png in Resources */,
@@ -303,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC15EB61848373900048C33 /* main.m in Sources */,
+				2C6FDB38184DB48100F45D60 /* CocoaDebugTools.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

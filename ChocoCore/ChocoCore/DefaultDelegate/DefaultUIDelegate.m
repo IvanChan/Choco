@@ -743,6 +743,10 @@
     {
         [documentView webView:webView decidePolicyForGeolocationRequestFromOrigin:origin frame:frame listener:listener];
     }
+    else
+    {
+        [listener use];
+    }
 }
 
 - (void)webView:(WebView *)webView decidePolicyForNotificationRequestFromOrigin:(id)origin listener:(id/*<WebAllowDenyPolicyListener>*/)listener
@@ -753,6 +757,10 @@
     {
         [documentView webView:webView decidePolicyForNotificationRequestFromOrigin:origin listener:listener];
     }
+    else
+    {
+        [listener use];
+    }
 }
 
 - (void)webView:(WebView *)webView decidePolicyForUserMediaRequestFromOrigin:(id)origin listener:(id/*<WebAllowDenyPolicyListener>*/)listener
@@ -762,6 +770,10 @@
     if ([documentView respondsToSelector:@selector(webView:decidePolicyForUserMediaRequestFromOrigin:listener:)])
     {
         [documentView webView:webView decidePolicyForUserMediaRequestFromOrigin:origin listener:listener];
+    }
+    else
+    {
+        [listener use];
     }
 }
 

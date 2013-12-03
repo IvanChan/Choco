@@ -11,7 +11,11 @@
 #import "CCWebBrowserView.h"
 #import "CCWebScrollView.h"
 #import "DefaultDelegateDefine.h"
+#import "CCWebViewWebViewDelegate.h"
 
+#define UIWEBVIEW_LIKE
+
+@class WebFrameView;
 @interface CCWebView ()
 {
     CCWebBrowserView    *_webBrowserView;
@@ -22,6 +26,8 @@
 @property (nonatomic, retain) DefaultFrameLoadDelegate      *frameLoadDelegateHandler;
 @property (nonatomic, retain) DefaultResourceLoadDelegate   *resourceLoadDelegateHandler;
 @property (nonatomic, retain) DefaultUIDelegate             *UIDelegateHandler;
+
+@property (nonatomic, retain) CCWebViewWebViewDelegate      *webViewDelegate;
 
 @end
 
@@ -66,11 +72,26 @@
     //_webDocumentView._editingDelegate = self;
     [_webScrollView addSubview:_webBrowserView];
 
-    [[self webView] setUIDelegate:self.UIDelegateHandler];
-    [[self webView] setFrameLoadDelegate:self.frameLoadDelegateHandler];
-    [[self webView] setResourceLoadDelegate:self.resourceLoadDelegateHandler];
-    [[self webView] setPolicyDelegate:self.policyDelegateHandler];
+#ifdef UIWEBVIEW_LIKE
+    _webViewDelegate = [[CCWebViewWebViewDelegate alloc] initWithCCWebView:self];
+    [[self webView] setUIDelegate:_webViewDelegate];
+    [[self webView] setFrameLoadDelegate:_webViewDelegate];
+    [[self webView] setResourceLoadDelegate:_webViewDelegate];
+    [[self webView] setPolicyDelegate:_webViewDelegate];
     
+#else
+    _UIDelegateHandler = [[DefaultUIDelegate alloc] initWithCCWebView:self];
+    [[self webView] setUIDelegate:self.UIDelegateHandler];
+    
+    _frameLoadDelegateHandler = [[DefaultFrameLoadDelegate alloc] initWithCCWebView:self];
+    [[self webView] setFrameLoadDelegate:self.frameLoadDelegateHandler];
+    
+    _resourceLoadDelegateHandler = [[DefaultResourceLoadDelegate alloc] initWithCCWebView:self];
+    [[self webView] setResourceLoadDelegate:self.resourceLoadDelegateHandler];
+    
+     _policyDelegateHandler = [[DefaultPolicyDelegate alloc] initWithCCWebView:self];
+    [[self webView] setPolicyDelegate:self.policyDelegateHandler];
+#endif
     //TODO:
     //[[self webView] setDownloadDelegate:self];
     //[[self webView] setHistoryDelegate:self];
@@ -107,46 +128,6 @@
 }
 
 #pragma mark - Getters
-- (DefaultPolicyDelegate *)policyDelegateHandler
-{
-    if (_policyDelegateHandler == nil)
-    {
-        _policyDelegateHandler = [[DefaultPolicyDelegate alloc] initWithCCWebView:self];
-    }
-    
-    return _policyDelegateHandler;
-}
-
-- (DefaultFrameLoadDelegate *)frameLoadDelegateHandler
-{
-    if (_frameLoadDelegateHandler == nil)
-    {
-        _frameLoadDelegateHandler = [[DefaultFrameLoadDelegate alloc] initWithCCWebView:self];
-    }
-    
-    return _frameLoadDelegateHandler;
-}
-
-- (DefaultResourceLoadDelegate *)resourceLoadDelegateHandler
-{
-    if (_resourceLoadDelegateHandler == nil)
-    {
-        _resourceLoadDelegateHandler = [[DefaultResourceLoadDelegate alloc] initWithCCWebView:self];
-    }
-    
-    return _resourceLoadDelegateHandler;
-}
-
-- (DefaultUIDelegate *)UIDelegateHandler
-{
-    if (_UIDelegateHandler == nil)
-    {
-        _UIDelegateHandler = [[DefaultUIDelegate alloc] initWithCCWebView:self];
-    }
-    
-    return _UIDelegateHandler;
-}
-
 - (CCWebBrowserView *)browserView
 {
     return _webBrowserView;
@@ -357,27 +338,22 @@
     return [[self webView] stringByEvaluatingJavaScriptFromString:script];
 }
 
-#pragma mark - Delegate
+#pragma mark - BrowserView Delegate
+
 /**
- *  Called after willsentRequest, maybe just mainFrame
+ *
  *
  *  @param webView
- *  @param resource
- *  @param dataSource
- *
- *  @return TODO:need check return typ
  */
-- (NSURLRequest *)webView:(WebView *)webView connectionPropertiesForResource:(NSMutableURLRequest *)resource dataSource:(WebDataSource *)dataSource
-{//FIXME: return resource will lead to some kindof error, the load process stop
-    return nil;
-}
+- (void)webViewMainFrameDidFirstVisuallyNonEmptyLayoutInFrame:(CCWebBrowserView *)browserView
+{}
 
 /**
  *  Called after decidePolicyWithMIMEType & listener used
  *
  *  @param webView
  */
-- (void)webViewMainFrameDidCommitLoad:(CCWebBrowserView *)webDocumentView
+- (void)webViewMainFrameDidCommitLoad:(CCWebBrowserView *)browserView
 {
     //[webDocumentView _updateSize];
     
@@ -392,9 +368,9 @@
  *
  *  @param webView
  */
-- (void)webViewMainFrameDidFinishLoad:(CCWebBrowserView *)webDocumentView
+- (void)webViewMainFrameDidFinishLoad:(CCWebBrowserView *)browserView
 {
-    [webDocumentView _updateSize];
+    [browserView _updateSize];
     
     if ([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
     {
@@ -408,7 +384,7 @@
  *  @param webDocumentView //TODO: need check type
  *  @param error           
  */
-- (void)webViewMainFrameDidFailLoad:(CCWebDocumentView *)webDocumentView withError:(NSError *)error
+- (void)webViewMainFrameDidFailLoad:(CCWebBrowserView *)browserView withError:(NSError *)error
 {
     if ([self.delegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
     {
@@ -423,7 +399,7 @@
  *  @param frame    may changing to new frame
  *  @param oldFrame
  */
-- (void)view:(CCWebDocumentView *)webDocumentView didSetFrame:(CGRect)frame oldFrame:(CGRect)oldFrame
+- (void)view:(CCWebBrowserView *)browserView didSetFrame:(CGRect)frame oldFrame:(CGRect)oldFrame
 {
     if (!CGRectEqualToRect(frame, oldFrame))
     {
@@ -436,9 +412,6 @@
     }
 }
 
-- (void)webViewSupportedOrientationsUpdated:(id)arg0
-{}
-
 - (void)webViewProgressStepChange:(NSNotification *)notification
 {
     id value = [[notification object] valueForKey:@"estimatedProgress"];
@@ -449,4 +422,23 @@
 		[self.delegate webView:self loadingPercentageDidChange:step];
     }
 }
+
+#pragma mark - Runtime Get UIWebView methods
+- (void)saveStateToHistoryItem:(id)arg0 forWebView:(id)arg1
+{}
+- (void)restoreStateFromHistoryItem:(id)arg0 forWebView:(id)arg1
+{}
+
+- (void)_webViewCommonInitWithWebView:(id)arg0 scalesPageToFit:(char)arg1 shouldEnableReachability:(char)arg2
+{}
+
+- (void)_rescaleDocument
+{}
+
+- (void)_frameOrBoundsChanged
+{}
+
+
+
+
 @end

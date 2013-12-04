@@ -18,7 +18,7 @@
 #define UIWEBVIEW_LIKE
 
 @class WebFrameView, WebHistoryItem;
-@interface CCWebView ()
+@interface CCWebView () <UIScrollViewDelegate>
 {
     CCWebBrowserView    *_webBrowserView;
     CCWebScrollView     *_webScrollView;
@@ -34,6 +34,7 @@
 @end
 
 @implementation CCWebView
+@synthesize scalesPageToFit = _scalesPageToFit;
 
 #pragma mark - Init & Dealloc
 - (id)init
@@ -70,14 +71,20 @@
     
     //build scrollView
     _webScrollView = [[CCWebScrollView alloc] initWithFrame:self.bounds];
+    _webScrollView.delegate = self;
     _webScrollView.backgroundColor = [UIColor purpleColor];
     _webScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [_webScrollView addSubview:_webBrowserView];
     
+    //configure scrollView
+    [_webScrollView setDirectionalLockEnabled:YES];
+    [_webScrollView setAlwaysBounceVertical:YES];
+    
+    //configure browserView
     [_webBrowserView setTilingEnabled:YES];
     [_webBrowserView setLayoutTilesInMainThread:NO];
     [_webBrowserView setAutoresizes:YES];
-    //[_webBrowserView setContentsPosition:CGRectMake(0, 0, 768, 944)];
+    [_webBrowserView setContentsPosition:7];
     [_webBrowserView setDelegate:self];
     [_webBrowserView setSmoothsFonts:YES];
     [_webBrowserView setUsePreTimberlineTransparencyBehavior];
@@ -194,7 +201,7 @@
 
 - (BOOL)scalesPageToFit
 {
-    return NO;
+    return _scalesPageToFit;
 }
 
 - (UIDataDetectorTypes)dataDetectorTypes
@@ -259,7 +266,13 @@
 
 #pragma mark - Setters
 - (void)setScalesPageToFit:(BOOL)scalesPageToFit
-{}
+{
+    if (scalesPageToFit != _scalesPageToFit)
+    {
+        _scalesPageToFit = scalesPageToFit;
+        [self _updateViewSettings];
+    }
+}
 
 - (void)setDataDetectorTypes:(UIDataDetectorTypes)dataDetectorTypes
 {
@@ -322,6 +335,38 @@
 	{
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:@"WebProgressEstimateChangedNotification" object:coreWebView];
 	}
+}
+
+#pragma mark - 
+- (void)_setRichTextReaderViewportSettings
+{}
+
+- (void)_setScalesPageToFitViewportSettings
+{
+    [self.browserView _restoreViewportSettingsWithSize:self.bounds.size];
+    
+    [self.browserView setInitialScale:-1 forDocumentTypes:16];
+    [self.browserView setMinimumScale:0.25 forDocumentTypes:16];
+    
+    [self.browserView setViewportSize:self.bounds.size forDocumentTypes: -1082130432];
+    [self.browserView setInitialScale: -1 forDocumentTypes: 8];
+    [self.browserView setViewportSize:self.bounds.size forDocumentTypes: -1082130432];
+}
+
+- (void)_updateViewSettings
+{
+    [self _setScalesPageToFitViewportSettings];
+    [self _setRichTextReaderViewportSettings];
+    
+    [self.scrollView setFrame:self.bounds];
+    
+    [self.browserView setMinimumSize:self.bounds.size updateCurrentViewportConfigurationSize:YES];
+    
+    self.scrollView.contentSize = [[self browserView] frame].size;
+
+    [[[self webView] mainFrame] _setVisibleSize:self.bounds.size];
+    
+    [self.browserView layoutTilesNow];
 }
 
 #pragma mark - Load Methods
@@ -437,12 +482,7 @@
 {
     if (!CGRectEqualToRect(frame, oldFrame))
     {
-        _webScrollView.contentSize = frame.size;
-        
-        if (frame.size.width > 0 && frame.size.height > 0)
-        {
-            //[webDocumentView redrawScaledDocument];
-        }
+        [self _updateViewSettings];
     }
 }
 
@@ -464,8 +504,37 @@
     }
 }
 
-#pragma marl - Rotate
+#pragma mark - Rotate
 - (void)_didRotate:(NSNotification *)notification
+{
+    [_webBrowserView sendOrientationEventForOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
+}
+
+#pragma mark - ScrollView Delegate
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+{}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return [self browserView];
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
+{}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
+{}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
 {}
 
 @end

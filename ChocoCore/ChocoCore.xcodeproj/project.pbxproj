@@ -24,6 +24,10 @@
 		2CC15F7B184868EF00048C33 /* CCWebScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F7A184868EF00048C33 /* CCWebScrollView.m */; };
 		2CC15F7C184869EF00048C33 /* CCWebDocumentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F7218485EAC00048C33 /* CCWebDocumentView.m */; };
 		2CC15F7F18486E9C00048C33 /* CCWebBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC15F7018485EAC00048C33 /* CCWebBrowserView.m */; };
+		2CC41708184EF874009D9ED8 /* CCWebTiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC41707184EF874009D9ED8 /* CCWebTiledView.m */; };
+		2CC4170C184EFAF4009D9ED8 /* WebViewCC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4170B184EFAF4009D9ED8 /* WebViewCC.m */; };
+		2CC4170F184EFB48009D9ED8 /* WAKViewCC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4170E184EFB48009D9ED8 /* WAKViewCC.m */; };
+		2CC41714184EFDEF009D9ED8 /* WAKWindowCC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC41713184EFDEF009D9ED8 /* WAKWindowCC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +81,17 @@
 		2CC15FA1184875CF00048C33 /* WebViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewProtocol.h; sourceTree = "<group>"; };
 		2CC15FA2184877BF00048C33 /* WebFrameProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebFrameProtocol.h; sourceTree = "<group>"; };
 		2CC15FA318487C0F00048C33 /* WebDataSourceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebDataSourceProtocol.h; sourceTree = "<group>"; };
+		2CC41706184EF874009D9ED8 /* CCWebTiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebTiledView.h; sourceTree = "<group>"; };
+		2CC41707184EF874009D9ED8 /* CCWebTiledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCWebTiledView.m; sourceTree = "<group>"; };
+		2CC41709184EF891009D9ED8 /* UIWebTiledViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIWebTiledViewProtocol.h; sourceTree = "<group>"; };
+		2CC4170A184EFAF4009D9ED8 /* WebViewCC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewCC.h; sourceTree = "<group>"; };
+		2CC4170B184EFAF4009D9ED8 /* WebViewCC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewCC.m; sourceTree = "<group>"; };
+		2CC4170D184EFB48009D9ED8 /* WAKViewCC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAKViewCC.h; sourceTree = "<group>"; };
+		2CC4170E184EFB48009D9ED8 /* WAKViewCC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAKViewCC.m; sourceTree = "<group>"; };
+		2CC41710184EFB5C009D9ED8 /* WAKViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WAKViewProtocol.h; sourceTree = "<group>"; };
+		2CC41711184EFD1F009D9ED8 /* WAKWindowProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WAKWindowProtocol.h; sourceTree = "<group>"; };
+		2CC41712184EFDEF009D9ED8 /* WAKWindowCC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAKWindowCC.h; sourceTree = "<group>"; };
+		2CC41713184EFDEF009D9ED8 /* WAKWindowCC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAKWindowCC.m; sourceTree = "<group>"; };
 		6A94674A1848DDC400554A78 /* WebFramePolicyListenerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebFramePolicyListenerProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,13 +187,24 @@
 				6A94674A1848DDC400554A78 /* WebFramePolicyListenerProtocol.h */,
 				2CC15FA318487C0F00048C33 /* WebDataSourceProtocol.h */,
 				2CC15FA2184877BF00048C33 /* WebFrameProtocol.h */,
+				2CC41711184EFD1F009D9ED8 /* WAKWindowProtocol.h */,
+				2CC41712184EFDEF009D9ED8 /* WAKWindowCC.h */,
+				2CC41713184EFDEF009D9ED8 /* WAKWindowCC.m */,
+				2CC41710184EFB5C009D9ED8 /* WAKViewProtocol.h */,
+				2CC4170D184EFB48009D9ED8 /* WAKViewCC.h */,
+				2CC4170E184EFB48009D9ED8 /* WAKViewCC.m */,
 				2CC15FA1184875CF00048C33 /* WebViewProtocol.h */,
-				2CC15F7E18486E5E00048C33 /* UIWebBrowserViewProtocol.h */,
-				2CC15F6F18485EAC00048C33 /* CCWebBrowserView.h */,
-				2CC15F7018485EAC00048C33 /* CCWebBrowserView.m */,
+				2CC4170A184EFAF4009D9ED8 /* WebViewCC.h */,
+				2CC4170B184EFAF4009D9ED8 /* WebViewCC.m */,
+				2CC41709184EF891009D9ED8 /* UIWebTiledViewProtocol.h */,
+				2CC41706184EF874009D9ED8 /* CCWebTiledView.h */,
+				2CC41707184EF874009D9ED8 /* CCWebTiledView.m */,
 				2CC15F7D18486A2600048C33 /* UIWebDocumentViewProtocol.h */,
 				2CC15F7118485EAC00048C33 /* CCWebDocumentView.h */,
 				2CC15F7218485EAC00048C33 /* CCWebDocumentView.m */,
+				2CC15F7E18486E5E00048C33 /* UIWebBrowserViewProtocol.h */,
+				2CC15F6F18485EAC00048C33 /* CCWebBrowserView.h */,
+				2CC15F7018485EAC00048C33 /* CCWebBrowserView.m */,
 				2C15240E184C2CDA007080D8 /* WebViewDefine.h */,
 			);
 			path = Documentations;
@@ -255,10 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC4170C184EFAF4009D9ED8 /* WebViewCC.m in Sources */,
 				2C15240C184C2C84007080D8 /* DefaultResourceLoadDelegate.m in Sources */,
+				2CC4170F184EFB48009D9ED8 /* WAKViewCC.m in Sources */,
 				2C152415184C2E94007080D8 /* DefaultPolicyDelegate.m in Sources */,
+				2CC41714184EFDEF009D9ED8 /* WAKWindowCC.m in Sources */,
 				2C15240D184C2C84007080D8 /* DefaultUIDelegate.m in Sources */,
 				2CC15F7F18486E9C00048C33 /* CCWebBrowserView.m in Sources */,
+				2CC41708184EF874009D9ED8 /* CCWebTiledView.m in Sources */,
 				2CC15F7B184868EF00048C33 /* CCWebScrollView.m in Sources */,
 				2C9485A5184DCBCD000C8214 /* CCWebViewWebViewDelegate.m in Sources */,
 				2C6FDB33184DB29F00F45D60 /* DefaultUIKitDelegate.m in Sources */,

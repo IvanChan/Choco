@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WebViewProtocol.h"
+#import "WebViewCC.h"
 
 @protocol UIWebDocumentViewProtocol <NSObject>
 
@@ -639,7 +639,7 @@
 - (id)contentView;
 - (id)initWithFrame:(CGRect)arg0 ;
 - (void)loadData:(id)arg0 MIMEType:(id)arg1 textEncodingName:(id)arg2 baseURL:(id)arg3 ;
-- (id<WebViewProtocol>)webView;
+- (WebView *)webView;
 - (void)setFrame:(CGRect)arg0 ;
 - (id)subviews;
 - (void)stopLoading:(id)arg0 ;

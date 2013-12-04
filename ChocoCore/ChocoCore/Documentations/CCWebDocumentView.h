@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Chan Ivan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CCWebTiledView.h"
 #import "UIWebDocumentViewProtocol.h"
 
-@interface CCWebDocumentView : UIView <UIWebDocumentViewProtocol>
+@interface CCWebDocumentView : CCWebTiledView <UIWebDocumentViewProtocol>
 
 @end

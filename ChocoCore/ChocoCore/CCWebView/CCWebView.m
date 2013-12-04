@@ -12,10 +12,12 @@
 #import "CCWebScrollView.h"
 #import "DefaultDelegateDefine.h"
 #import "CCWebViewWebViewDelegate.h"
+#import "WebViewDefine.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define UIWEBVIEW_LIKE
 
-@class WebFrameView;
+@class WebFrameView, WebHistoryItem;
 @interface CCWebView ()
 {
     CCWebBrowserView    *_webBrowserView;
@@ -59,42 +61,79 @@
 {
     self.backgroundColor = [UIColor orangeColor];
     
+    //build BrowserView
+    Class cls = NSClassFromString(@"UIWebBrowserView");
+    _webBrowserView = [[cls alloc] initWithFrame:self.bounds];
+    [_webBrowserView enableReachability];
+    //[_webBrowserView set_editingDelegateForEverythingExceptForms:self];
+    [cls preferredScrollDecelerationFactor];
+    
+    //build scrollView
     _webScrollView = [[CCWebScrollView alloc] initWithFrame:self.bounds];
     _webScrollView.backgroundColor = [UIColor purpleColor];
     _webScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [_webScrollView addSubview:_webBrowserView];
+    
+    [_webBrowserView setTilingEnabled:YES];
+    [_webBrowserView setLayoutTilesInMainThread:NO];
+    [_webBrowserView setAutoresizes:YES];
+    //[_webBrowserView setContentsPosition:CGRectMake(0, 0, 768, 944)];
+    [_webBrowserView setDelegate:self];
+    [_webBrowserView setSmoothsFonts:YES];
+    [_webBrowserView setUsePreTimberlineTransparencyBehavior];
+    
+    {
+#ifdef UIWEBVIEW_LIKE
+        _webViewDelegate = [[CCWebViewWebViewDelegate alloc] initWithCCWebView:self];
+        [[self webView] setUIDelegate:_webViewDelegate];
+        [[self webView] setFrameLoadDelegate:_webViewDelegate];
+        [[self webView] setResourceLoadDelegate:_webViewDelegate];
+        [[self webView] setPolicyDelegate:_webViewDelegate];
+        
+#else
+        _UIDelegateHandler = [[DefaultUIDelegate alloc] initWithCCWebView:self];
+        [[self webView] setUIDelegate:self.UIDelegateHandler];
+        
+        _frameLoadDelegateHandler = [[DefaultFrameLoadDelegate alloc] initWithCCWebView:self];
+        [[self webView] setFrameLoadDelegate:self.frameLoadDelegateHandler];
+        
+        _resourceLoadDelegateHandler = [[DefaultResourceLoadDelegate alloc] initWithCCWebView:self];
+        [[self webView] setResourceLoadDelegate:self.resourceLoadDelegateHandler];
+        
+        _policyDelegateHandler = [[DefaultPolicyDelegate alloc] initWithCCWebView:self];
+        [[self webView] setPolicyDelegate:self.policyDelegateHandler];
+#endif
+        
+        //TODO:
+        //[[self webView] setDownloadDelegate:self];
+        //[[self webView] setHistoryDelegate:self];
+    }
+    
+    [[self webView] _setFontFallbackPrefersPictographs:NO];
+    
+    WAKWindow *wakWindow = [[self webView] window];
+    [wakWindow setRootLayer:[self layer]];
+    
+    id webPreferences = [[self webView] preferences];
+    [webPreferences setOfflineWebApplicationCacheEnabled:YES];
+    [webPreferences _setLocalStorageDatabasePath:[NSClassFromString(@"WebStorageManager") _storageDirectoryPath]];
+    [webPreferences _setMinimumZoomFontSize: 0];
+    [webPreferences _setAllowMultiElementImplicitFormSubmission: NO];
+    
     [self addSubview:_webScrollView];
     
-    Class cls = NSClassFromString(@"UIWebBrowserView");
-    _webBrowserView = [[cls alloc] initWithFrame:_webScrollView.bounds];
-    _webBrowserView.autoresizingMask = UIViewAutoresizingNone;
-    _webBrowserView.delegate = self;
-    //FIXME: according to UIWebView, should set this
-    //_webDocumentView._editingDelegate = self;
-    [_webScrollView addSubview:_webBrowserView];
+    [_webBrowserView _setDocumentType:4];
+    [_webBrowserView setDetectsPhoneNumbers:YES];
 
-#ifdef UIWEBVIEW_LIKE
-    _webViewDelegate = [[CCWebViewWebViewDelegate alloc] initWithCCWebView:self];
-    [[self webView] setUIDelegate:_webViewDelegate];
-    [[self webView] setFrameLoadDelegate:_webViewDelegate];
-    [[self webView] setResourceLoadDelegate:_webViewDelegate];
-    [[self webView] setPolicyDelegate:_webViewDelegate];
+    Class WebHistoryCls = NSClassFromString(@"WebHistory");
+    if ([WebHistoryCls optionalSharedHistory] == nil)
+    {
+        id sharedHistory = [[WebHistoryCls alloc] init];
+        [WebHistoryCls setOptionalSharedHistory:sharedHistory];
+        [sharedHistory release];
+    }
     
-#else
-    _UIDelegateHandler = [[DefaultUIDelegate alloc] initWithCCWebView:self];
-    [[self webView] setUIDelegate:self.UIDelegateHandler];
-    
-    _frameLoadDelegateHandler = [[DefaultFrameLoadDelegate alloc] initWithCCWebView:self];
-    [[self webView] setFrameLoadDelegate:self.frameLoadDelegateHandler];
-    
-    _resourceLoadDelegateHandler = [[DefaultResourceLoadDelegate alloc] initWithCCWebView:self];
-    [[self webView] setResourceLoadDelegate:self.resourceLoadDelegateHandler];
-    
-     _policyDelegateHandler = [[DefaultPolicyDelegate alloc] initWithCCWebView:self];
-    [[self webView] setPolicyDelegate:self.policyDelegateHandler];
-#endif
-    //TODO:
-    //[[self webView] setDownloadDelegate:self];
-    //[[self webView] setHistoryDelegate:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_didRotate:) name:@"UIWindowDidRotateNotification" object: nil];
     
     [self enableProgressChangeNotification:YES];
     
@@ -339,11 +378,10 @@
 }
 
 #pragma mark - BrowserView Delegate
-
 /**
  *
  *
- *  @param webView
+ *  @param browserView
  */
 - (void)webViewMainFrameDidFirstVisuallyNonEmptyLayoutInFrame:(CCWebBrowserView *)browserView
 {}
@@ -351,12 +389,10 @@
 /**
  *  Called after decidePolicyWithMIMEType & listener used
  *
- *  @param webView
+ *  @param browserView
  */
 - (void)webViewMainFrameDidCommitLoad:(CCWebBrowserView *)browserView
 {
-    //[webDocumentView _updateSize];
-    
     if ([self.delegate respondsToSelector:@selector(webViewDidStartLoad:)])
     {
         [self.delegate webViewDidStartLoad:self];
@@ -366,12 +402,10 @@
 /**
  *  MainFrame did load finish
  *
- *  @param webView
+ *  @param browserView
  */
 - (void)webViewMainFrameDidFinishLoad:(CCWebBrowserView *)browserView
 {
-    [browserView _updateSize];
-    
     if ([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
     {
         [self.delegate webViewDidFinishLoad:self];
@@ -381,7 +415,7 @@
 /**
  *  mainFrame fail
  *
- *  @param webDocumentView //TODO: need check type
+ *  @param browserView
  *  @param error           
  */
 - (void)webViewMainFrameDidFailLoad:(CCWebBrowserView *)browserView withError:(NSError *)error
@@ -395,8 +429,8 @@
 /**
  *  DocumentView notify the delegate when _updateSize was called
  *
- *  @param webView  the documentView
- *  @param frame    may changing to new frame
+ *  @param browserView
+ *  @param frame    
  *  @param oldFrame
  */
 - (void)view:(CCWebBrowserView *)browserView didSetFrame:(CGRect)frame oldFrame:(CGRect)oldFrame
@@ -412,6 +446,13 @@
     }
 }
 
+- (void)saveStateToHistoryItem:(WebHistoryItem *)item forWebView:(CCWebBrowserView *)browserView
+{}
+
+- (void)restoreStateFromHistoryItem:(WebHistoryItem *)item forWebView:(CCWebBrowserView *)browserView
+{}
+
+#pragma mark - Progress
 - (void)webViewProgressStepChange:(NSNotification *)notification
 {
     id value = [[notification object] valueForKey:@"estimatedProgress"];
@@ -423,22 +464,8 @@
     }
 }
 
-#pragma mark - Runtime Get UIWebView methods
-- (void)saveStateToHistoryItem:(id)arg0 forWebView:(id)arg1
+#pragma marl - Rotate
+- (void)_didRotate:(NSNotification *)notification
 {}
-- (void)restoreStateFromHistoryItem:(id)arg0 forWebView:(id)arg1
-{}
-
-- (void)_webViewCommonInitWithWebView:(id)arg0 scalesPageToFit:(char)arg1 shouldEnableReachability:(char)arg2
-{}
-
-- (void)_rescaleDocument
-{}
-
-- (void)_frameOrBoundsChanged
-{}
-
-
-
 
 @end

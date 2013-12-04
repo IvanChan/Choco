@@ -627,6 +627,3 @@
 - (char)isLoading;
 
 @end
-
-
-typedef NSObject<WebViewProtocol> WebView;

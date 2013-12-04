@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 Chan Ivan. All rights reserved.
 //
 
-#import "WebViewProtocol.h"
+#import "WAKWindowCC.h"
+#import "WebViewCC.h"
 #import "WebFrameProtocol.h"
 #import "WebDataSourceProtocol.h"
 #import "WebFramePolicyListenerProtocol.h"

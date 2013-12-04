@@ -226,7 +226,7 @@ void _printMethods(Class cls)
             }
         }
         
-        printf("%s{} \n", [methodStr UTF8String]);
+        printf("%s; \n", [methodStr UTF8String]);
         
         [methodStr release];
         free(returnType);
@@ -255,6 +255,27 @@ void pVarsValue(int pointer)
         
         printf("\t %-25s  %-40s \t = \t %p \n", typeEncodeToString(varEncode), varName, var);
 
+    }
+    
+    printf("}\n");
+    
+    cls = [cls superclass];
+    
+    varCount = 0;
+    vars = class_copyIvarList(cls, &varCount);
+    
+    printf("{\n");
+    
+    for(int i = 0; i < varCount; i++)
+    {
+        const char *varEncode = ivar_getTypeEncoding(vars[i]);
+        const char *varName = ivar_getName(vars[i]);
+        
+        void *var = 0;
+        object_getInstanceVariable(obj, varName, &var);
+        
+        printf("\t %-25s  %-40s \t = \t %p \n", typeEncodeToString(varEncode), varName, var);
+        
     }
     
     printf("}\n");

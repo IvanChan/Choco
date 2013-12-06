@@ -60,6 +60,8 @@
 
 - (BOOL)setup
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wall"
     self.backgroundColor = [UIColor orangeColor];
     
     //build BrowserView
@@ -143,6 +145,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_didRotate:) name:@"UIWindowDidRotateNotification" object: nil];
     
     [self enableProgressChangeNotification:YES];
+    
+#pragma clang diagnostic pop
     
     return (_webScrollView && _webBrowserView);
 }
@@ -343,13 +347,14 @@
 
 - (void)_setScalesPageToFitViewportSettings
 {
+    //FIXME: these suck
     [self.browserView _restoreViewportSettingsWithSize:self.bounds.size];
     
-    [self.browserView setInitialScale:-1 forDocumentTypes:16];
-    [self.browserView setMinimumScale:0.25 forDocumentTypes:16];
+    [self.browserView setInitialScale:self.scrollView.zoomScale forDocumentTypes:16];
+    [self.browserView setMinimumScale:self.scrollView.minimumZoomScale forDocumentTypes:16];
     
     [self.browserView setViewportSize:self.bounds.size forDocumentTypes: -1082130432];
-    [self.browserView setInitialScale: -1 forDocumentTypes: 8];
+    [self.browserView setInitialScale:self.scrollView.zoomScale forDocumentTypes: 8];
     [self.browserView setViewportSize:self.bounds.size forDocumentTypes: -1082130432];
 }
 
@@ -532,7 +537,9 @@
 {}
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
-{}
+{
+    [self.browserView redrawScaledDocument];
+}
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
 {}

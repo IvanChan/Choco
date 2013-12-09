@@ -10,3 +10,4 @@
 #import "DefaultFrameLoadDelegate.h"
 #import "DefaultResourceLoadDelegate.h"
 #import "DefaultUIDelegate.h"
+#import "DefaultUIKitDelegate.h"

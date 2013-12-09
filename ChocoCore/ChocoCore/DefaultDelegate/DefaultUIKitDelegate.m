@@ -302,6 +302,14 @@ allowHorizontalScrollbar:(BOOL)allowHorizontalScrollbar allowVerticalScrollbar:(
     }
 }
 
+- (void)webThreadWebViewDidLayout:(WebView *)webView byScrolling:(BOOL)byScrolling
+{
+    if ([CC_DOCUMENT_VIEW respondsToSelector:@selector(webThreadWebViewDidLayout:byScrolling:)])
+    {
+        [CC_DOCUMENT_VIEW webThreadWebViewDidLayout:webView byScrolling:byScrolling];
+    }
+}
+
 - (void)webViewDidStartOverflowScroll:(WebView *)webView
 {
     if ([CC_DOCUMENT_VIEW respondsToSelector:@selector(webViewDidStartOverflowScroll:)])

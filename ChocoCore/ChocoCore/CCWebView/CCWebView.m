@@ -15,7 +15,7 @@
 #import "WebViewDefine.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define UIWEBVIEW_LIKE
+//#define UIWEBVIEW_LIKE
 
 @class WebFrameView, WebHistoryItem;
 @interface CCWebView () <UIScrollViewDelegate>
@@ -28,6 +28,7 @@
 @property (nonatomic, retain) DefaultFrameLoadDelegate      *frameLoadDelegateHandler;
 @property (nonatomic, retain) DefaultResourceLoadDelegate   *resourceLoadDelegateHandler;
 @property (nonatomic, retain) DefaultUIDelegate             *UIDelegateHandler;
+@property (nonatomic, retain) DefaultUIKitDelegate          *UIKitDelegateHandler;
 
 @property (nonatomic, retain) CCWebViewWebViewDelegate      *webViewDelegate;
 
@@ -111,6 +112,9 @@
         
         _policyDelegateHandler = [[DefaultPolicyDelegate alloc] initWithCCWebView:self];
         [[self webView] setPolicyDelegate:self.policyDelegateHandler];
+        
+        _UIKitDelegateHandler = [[DefaultUIKitDelegate alloc] initWithCCWebView:self];
+        [[self webView] _setUIKitDelegate:self.UIKitDelegateHandler];
 #endif
         
         //TODO:
@@ -166,6 +170,9 @@
     
     [_UIDelegateHandler release];
     _UIDelegateHandler = nil;
+    
+    [_UIKitDelegateHandler release];
+    _UIKitDelegateHandler = nil;
     
     _webBrowserView.delegate = nil;
     [_webBrowserView release];
@@ -360,6 +367,8 @@
 
 - (void)_updateViewSettings
 {
+    return;
+    
     [self _setScalesPageToFitViewportSettings];
     [self _setRichTextReaderViewportSettings];
     

@@ -178,7 +178,7 @@
     }
     
     //setup first tab
-    [[PageManager sharedManger] addNewPageWithURL:[NSURL URLWithString:@"http://www.163.com"]];
+    [[PageManager sharedManger] addNewPageWithURL:[NSURL URLWithString:@"http://www.163.com/ipad"]];
 }
 
 - (void)layoutWebContentSize
